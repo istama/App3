@@ -1,0 +1,16 @@
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\NengaBooster7.0.csprojAssemblyReference.cache
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\IsTama.NengaBooster.Properties.Resources.resources
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\NengaBooster7.0.csproj.GenerateResource.cache
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\NengaBooster7.0.csproj.CoreCompileInputs.cache
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\bin\Debug\Newtonsoft.Json.dll
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\bin\Debug\Newtonsoft.Json.xml
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\NengaBooster7.0.csproj.CopyComplete
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\IsTama.NengaBooster.UI.UserAccountSettings.View.UserAccountForm.resources
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\IsTama.NengaBooster.UI.NengaBoosterConfigSettings.View.NengaBoosterConfigForm.resources
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\IsTama.NengaBooster.UI.UserConfigSettings.View.UserConfigForm.resources
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\IsTama.NengaBooster.UI.Main.View.MainForm.resources
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\bin\Debug\NengaBooster.exe.config
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\bin\Debug\NengaBooster.exe
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\bin\Debug\NengaBooster.pdb
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\NengaBooster.exe
+C:\Users\midi_\OneDrive\SourceCode\C#\MyPrintApplication\NengaBooster7.0\NengaBooster7.0\obj\Debug\NengaBooster.pdb

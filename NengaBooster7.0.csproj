@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{90B06F08-B54E-403E-B7E1-0F56BE750026}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>IsTama.NengaBooster</RootNamespace>
+    <AssemblyName>NengaBooster</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>IsTama.NengaBooster.AppMain.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\AppMain\Di.cs" />
+    <Compile Include="src\Core\Configs\ApplicationBasicConfig.cs" />
+    <Compile Include="src\Core\Configs\DialogConfig.cs" />
+    <Compile Include="src\Core\Configs\HensyuApplicationConfig.cs" />
+    <Compile Include="src\Core\Configs\HensyuBehaviorConfig.cs" />
+    <Compile Include="src\Core\Configs\InformationApplicatonConfig.cs" />
+    <Compile Include="src\Core\Configs\InformationDetailApplicationConfig.cs" />
+    <Compile Include="src\Core\Configs\KouseishiBehaviorConfig.cs" />
+    <Compile Include="src\Core\Configs\NaireBehaviorConfig.cs" />
+    <Compile Include="src\Core\Configs\NengaMenuConfig.cs" />
+    <Compile Include="src\Core\Configs\OtherConfig.cs" />
+    <Compile Include="src\Core\Configs\KouseishiApplicationConfig.cs" />
+    <Compile Include="src\Core\Configs\LoginFormConfig.cs" />
+    <Compile Include="src\Core\Configs\NaireApplicationConfig.cs" />
+    <Compile Include="src\Core\Configs\NengaBoosterConfig.cs" />
+    <Compile Include="src\Core\Di\ServiceCollectionExtensionsForCore.cs" />
+    <Compile Include="src\Core\NengaApps\Adapters\INativeFormControlOperator.cs" />
+    <Compile Include="src\Core\NengaApps\Adapters\INativeFormControlStates.cs" />
+    <Compile Include="src\Core\NengaApps\Adapters\IKeyboard.cs" />
+    <Compile Include="src\UI\Gateways\InfrastructureInterfaces\IUserConfigRepositoryExtended.cs" />
+    <Compile Include="src\UI\Gateways\OperationModes\ToibanCheckedListClearMode.cs" />
+    <Compile Include="src\UI\Gateways\OperationModes\ToibanSelectMode.cs" />
+    <Compile Include="src\UI\Gateways\RepositoryImpl\OtherConfigRepository.cs" />
+    <Compile Include="src\UI\Gateways\RepositoryImpl\UserConfigReader.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\Dependencies\FormsThatMainFormControllerDependsOn.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\Dependencies\RepositoriesThatMainFormControllerDependsOn.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\Dependencies\UseCasesThatMainFormControllerDependsOn.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\Forms\INengaBoosterConfigForm.cs" />
+    <Compile Include="src\Core\NengaApps\Adapters\IUserAccountForm.cs" />
+    <Compile Include="src\Core\NengaApps\Adapters\INativeWindowOperator.cs" />
+    <Compile Include="src\Core\NengaApps\Adapters\INativeWindowStates.cs" />
+    <Compile Include="src\Core\NengaApps\Adapters\INativeWindowFactory.cs" />
+    <Compile Include="src\Core\NengaApps\Services\HensyuRPAService.cs" />
+    <Compile Include="src\Core\NengaApps\Services\InformationRPAService.cs" />
+    <Compile Include="src\Core\NengaApps\Services\KouseishiRPAService.cs" />
+    <Compile Include="src\Core\NengaApps\Services\NaireRPAService.cs" />
+    <Compile Include="src\Core\NengaApps\Values\UserAccount.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\HensyuWindow.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\InformationDetailWindow.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\InformationWindow.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\KouseishiWindow.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\LoginFormWindow.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\NaireWindow.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\DialogWindow.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\NengaAppWindowFactory.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\NengaAppWindowBasic.cs" />
+    <Compile Include="src\Core\NengaApps\Services\LoginRPAService.cs" />
+    <Compile Include="src\Core\NengaApps\Windows\NengaMenuWindow.cs" />
+    <Compile Include="src\Core\NengaApps\Values\Toiban.cs" />
+    <Compile Include="src\Error\ErrorMessageBox.cs" />
+    <Compile Include="src\Error\NengaBoosterException.cs" />
+    <Compile Include="src\Error\NengaBoosterExceptionArgs.cs" />
+    <Compile Include="src\Infrastructures\Configs\NengaBoosterConfigDTOReader.cs" />
+    <Compile Include="src\Infrastructures\Configs\NengaBoosterConfigDTOWriter.cs" />
+    <Compile Include="src\Infrastructures\Configs\UserConfigIOFactory.cs" />
+    <Compile Include="src\Infrastructures\Configs\UserConfigDTOReader.cs" />
+    <Compile Include="src\Infrastructures\Configs\UserConfigDTOWriter.cs" />
+    <Compile Include="src\Infrastructures\Di\ServiceCollectionExtensionsForInfrastructures.cs" />
+    <Compile Include="src\Infrastructures\IO\JsonDeserializer.cs" />
+    <Compile Include="src\Infrastructures\RPA\Keyboard_.cs" />
+    <Compile Include="src\Infrastructures\RPA\NativeFormControlOperator.cs" />
+    <Compile Include="src\Infrastructures\RPA\NativeWindowFactory.cs" />
+    <Compile Include="src\Infrastructures\RPA\NativeWindowOperator.cs" />
+    <Compile Include="src\Infrastructures\RPA\NativeFormControlStates.cs" />
+    <Compile Include="src\Infrastructures\RPA\NativeWindowStates.cs" />
+    <Compile Include="src\Infrastructures\RPA\TitleAndWidth.cs" />
+    <Compile Include="src\Infrastructures\RPA\WindowPool.cs" />
+    <Compile Include="src\UI\Di\ServiceCollectionExtentionsForUI.cs" />
+    <Compile Include="src\UI\Gateways\RepositoryImpl\ApplicationConfigRepository.cs" />
+    <Compile Include="src\UI\Gateways\InfrastructureInterfaces\INengaBoosterConfigDTOReader.cs" />
+    <Compile Include="src\UI\Gateways\InfrastructureInterfaces\INengaBoosterConfigDTOWriter.cs" />
+    <Compile Include="src\UI\Gateways\InfrastructureInterfaces\IUserConfigIOFactory.cs" />
+    <Compile Include="src\UI\Gateways\InfrastructureInterfaces\IUserConfigDTOReader.cs" />
+    <Compile Include="src\UI\Gateways\InfrastructureInterfaces\IUserConfigDTOWriter.cs" />
+    <Compile Include="src\UI\Gateways\DTO\NengaBoosterConfigDTO.cs" />
+    <Compile Include="src\UI\Gateways\RepositoryImpl\BehaviorConfigRepository.cs" />
+    <Compile Include="src\UI\Gateways\DTO\UserConfigDTO.cs" />
+    <Compile Include="src\UI\Gateways\RepositoryImpl\Mapper\ConfigValueParser.cs" />
+    <Compile Include="src\UI\Gateways\RepositoryImpl\Mapper\DtoAndViewModelMapper.cs" />
+    <Compile Include="src\UI\Gateways\RepositoryImpl\Mapper\NengaBoosterConfigDtoMapper.cs" />
+    <Compile Include="src\UI\Gateways\RepositoryImpl\UserConfigRepository.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\Forms\IUserConfigForm.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\MainFormController.Look.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\MainFormController.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\MainFormController.Menu.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\MainFormController.MenuStrip.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\MainFormPresenter.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\MainFormPresenter.MenuStrip.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\MainFormViewModel.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\MainFormViewModel.MenuStrip.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\Signal\ModifierKeysPressingState.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\Signal\ModifierKeysStateNotification.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\Signal\NotifyModifierKeysPressingStateEventArgs.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\ToibanList\ToibanCheckedListHelper.cs" />
+    <Compile Include="src\UI\MainForm\Presentations\ToibanList\ToibanCheckedListItem.cs" />
+    <Compile Include="src\UI\MainForm\View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\MainForm\View\MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\UI\MainForm\View\MainForm.MenuBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\MainForm\View\MainForm.MenuStrip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\MainForm\View\MainForm.ToibanCheckedList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\MainForm\View\MainForm.ToibanCheckedListMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\NengaBoosterConfigSettings\Presentations\Mapper\NengaBoosterConfigDtoAndViewModelMapper.cs" />
+    <Compile Include="src\UI\NengaBoosterConfigSettings\Presentations\NengaBoosterConfigFormPresenter.cs" />
+    <Compile Include="src\UI\NengaBoosterConfigSettings\Presentations\NengaBoosterConfigFormViewModel.BehaviorSettings.cs" />
+    <Compile Include="src\UI\NengaBoosterConfigSettings\Presentations\NengaBoosterConfigFormViewModel.ApplicationSettings.cs" />
+    <Compile Include="src\UI\NengaBoosterConfigSettings\Presentations\NengaBoosterConfigFormViewModel.cs" />
+    <Compile Include="src\UI\NengaBoosterConfigSettings\View\NengaBoosterConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\NengaBoosterConfigSettings\View\NengaBoosterConfigForm.designer.cs">
+      <DependentUpon>NengaBoosterConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\UI\NengaBoosterConfigSettings\View\NengaBoosterConfigFormExecutor.cs" />
+    <Compile Include="src\UI\UserAccountSettings\UserAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\UserAccountSettings\UserAccountForm.designer.cs">
+      <DependentUpon>UserAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\UI\UserAccountSettings\UserAccountFormExecutor.cs" />
+    <Compile Include="src\UI\UserAccountSettings\UserAccountFormPresenter.cs" />
+    <Compile Include="src\UI\UserConfigSettings\Presentations\Mapper\UserConfigDtoAndViewModelMapper.cs" />
+    <Compile Include="src\UI\UserConfigSettings\Presentations\UserConfigFormPresenter.cs" />
+    <Compile Include="src\UI\UserConfigSettings\Presentations\UserConfigFormViewModel.cs" />
+    <Compile Include="src\UI\UserConfigSettings\View\UserConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\UserConfigSettings\View\UserConfigForm.Designer.cs">
+      <DependentUpon>UserConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\UI\UserConfigSettings\View\UserConfigFormExecutor.cs" />
+    <Compile Include="src\UseCases\Di\ServiceCollectionExtensionsForUseCases.cs" />
+    <Compile Include="src\UseCases\Interfaces\IOpenHensyuUseCase.cs" />
+    <Compile Include="src\UseCases\Interfaces\IOpenInformationUseCase.cs" />
+    <Compile Include="src\UseCases\Interfaces\IOpenNaireUseCase.cs" />
+    <Compile Include="src\UseCases\Interfaces\IPrintKouseishiUseCase.cs" />
+    <Compile Include="src\UseCases\Interfaces\IStartScreenSaverStopperUseCase.cs" />
+    <Compile Include="src\UseCases\Interfaces\IStopScreenSaverStopperUseCase.cs" />
+    <Compile Include="src\UseCases\NengaApps\LoginService.cs" />
+    <Compile Include="src\UseCases\NengaApps\OpenHensyuUseCase.cs" />
+    <Compile Include="src\UseCases\NengaApps\OpenInformationUseCase.cs" />
+    <Compile Include="src\UseCases\NengaApps\OperationModes\HensyuOpenMode.cs" />
+    <Compile Include="src\UseCases\NengaApps\OperationModes\InformationOpenMode.cs" />
+    <Compile Include="src\UseCases\NengaApps\OperationModes\NaireOpenMode.cs" />
+    <Compile Include="src\UseCases\NengaApps\PrintKouseishiUseCase.cs" />
+    <Compile Include="src\UseCases\Presenters\IMainFormPresenter.cs" />
+    <Compile Include="src\UseCases\Repositories\IApplicationConfigRepository.cs" />
+    <Compile Include="src\UseCases\Repositories\IBehaviorConfigRepository.cs" />
+    <Compile Include="src\UseCases\Repositories\IOtherConfigRepository.cs" />
+    <Compile Include="src\UseCases\Repositories\IUserConfigRepository.cs" />
+    <Compile Include="src\UseCases\NengaApps\OpenNaireUseCase.cs" />
+    <Compile Include="src\UseCases\SSS\ScreenSaverStopperPeriods.cs" />
+    <Compile Include="src\UseCases\SSS\ScreenSaverStopper.cs" />
+    <Compile Include="src\UseCases\SSS\StartScreenSaverStopperUseCase.cs" />
+    <Compile Include="src\UseCases\SSS\StopScreenSaverStopperUseCase.cs" />
+    <Compile Include="src\Utils\Assert.cs" />
+    <Compile Include="src\Utils\AssertException.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyAndMouse\KeyAndMouseHook.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyAndMouse\KeyAndMouseHookEventArgs.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyAndMouse\KeyAndMouseState.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\InputKey.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\InputKeyConverters.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\KeyHook.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\KeyHookBase.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\KeyHookEventArgs.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\KeyHookPrimitive.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\KeyHookPrimitiveEventArgs.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\KeyState.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\KeyStateBuffer.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\ModifierKeys.cs" />
+    <Compile Include="src\Utils\Controls\Hook\KeyHook\ModifierKeysConverters.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\IDateTimeGetter.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseAction.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseButtons.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseButtonsBuffer.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseHook.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseHookBase.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseHookDoubleClickDetector.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseHookEventArgs.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseHookMessagingMode.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseState.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseWindowMessage.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseWindowMessageProcedures.cs" />
+    <Compile Include="src\Utils\Controls\Hook\MouseHook\MouseWindowMessageProceduresDefault.cs" />
+    <Compile Include="src\Utils\Controls\Window\FormControl.cs" />
+    <Compile Include="src\Utils\Controls\Window\ImeModes.cs" />
+    <Compile Include="src\Utils\Controls\Window\Keyboard.cs" />
+    <Compile Include="src\Utils\Controls\Window\WindowBase.cs" />
+    <Compile Include="src\Utils\Controls\Window\WindowController.cs" />
+    <Compile Include="src\Utils\Controls\Window\WindowOperations.cs" />
+    <Compile Include="src\Utils\DefaultParser.cs" />
+    <Compile Include="src\Utils\Di\ActivatorUtilities.cs" />
+    <Compile Include="src\Utils\Di\IServiceCollection.cs" />
+    <Compile Include="src\Utils\Di\IServiceProvider.cs" />
+    <Compile Include="src\Utils\Di\Key.cs" />
+    <Compile Include="src\Utils\Di\ServiceCollection.cs" />
+    <Compile Include="src\Utils\Di\ServiceDescriptor.cs" />
+    <Compile Include="src\Utils\Di\ServiceProvider.cs" />
+    <Compile Include="src\Utils\ExceptionArgs.cs" />
+    <Compile Include="src\Utils\FileReader.cs" />
+    <Compile Include="src\Utils\FileWriter.cs" />
+    <Compile Include="src\Infrastructures\IO\JsonSerializer.cs" />
+    <Compile Include="src\Utils\FocusOrderControlBlocks.cs" />
+    <Compile Include="src\Utils\IDeserializer.cs" />
+    <Compile Include="src\Utils\ISerializer.cs" />
+    <Compile Include="src\Utils\JsonReader.cs" />
+    <Compile Include="src\Utils\JsonWriter.cs" />
+    <Compile Include="src\Utils\KeysExtensions.cs" />
+    <Compile Include="src\Utils\MyException.cs" />
+    <Compile Include="src\Utils\StringExtensions.cs" />
+    <Compile Include="src\Utils\Threading\ApplicationMutex.cs" />
+    <Compile Include="src\Utils\Threading\UIThreadMethodInvoker.cs" />
+    <Compile Include="src\Utils\Validation.cs" />
+    <Compile Include="src\Utils\ViewModelBase2.cs" />
+    <Compile Include="src\Utils\ViewmodelBinder.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowController.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowHandleSearcher.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowIme.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowInfomation.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowKeyHook.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowKeyInput.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowMouseHook.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWIndowMouseInput.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowSubWindows.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowThread.cs" />
+    <Compile Include="src\Utils\WinApi\NativeWindowTsf.cs" />
+    <Compile Include="src\AppMain\Program.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="src\UI\MainForm\View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\UI\NengaBoosterConfigSettings\View\NengaBoosterConfigForm.resx">
+      <DependentUpon>NengaBoosterConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\UI\UserAccountSettings\UserAccountForm.resx">
+      <DependentUpon>UserAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\UI\UserConfigSettings\View\UserConfigForm.resx">
+      <DependentUpon>UserConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ngb.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
