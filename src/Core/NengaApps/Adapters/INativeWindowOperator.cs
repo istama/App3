@@ -29,6 +29,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
         INativeWindowOperator Wait(int waittime_ms);
 
         INativeWindowOperator ThrowIfFailed();
+        bool Do();
         Task<bool> DoAsync();
     }
 }

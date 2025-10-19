@@ -71,7 +71,9 @@ namespace IsTama.NengaBooster.UI.Gateways
                 {
                     // 正しい書式の値のみviewmodelにセットする
                     if (TryConvertToViewModelValueFrom(dto, dtoProp, vmProp.PropertyType, out var value, out _))
+                    {
                         vmProp.SetValue(vm, value);
+                    }
 
                     continue;
                 }

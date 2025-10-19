@@ -35,5 +35,7 @@ namespace IsTama.NengaBooster.UI.Gateways
         public bool RemoveToibanAllChecked { get; set; } = false;
         public bool RemoveToibanCheckedChecked { get; set; } = true;
         public bool RemoveToibanUncheckedChecked { get; set; } = false;
+
+        public int CheckedToibanListCharSize { get; set; } = 9;
     }
 }

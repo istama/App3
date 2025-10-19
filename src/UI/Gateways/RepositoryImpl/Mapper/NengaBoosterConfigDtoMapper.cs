@@ -113,7 +113,7 @@ namespace IsTama.NengaBooster.UI.Gateways
             {
                 WaitTime_DialogOpen = dto.WaitTime_Naire_DialogOpen,
 
-                Texts_Dialog_WorkProcessNames = dto.Texts_Dialog_WorkProcessNames.Split(',').ToList(),
+                Texts_Dialog_WorkProcessNames = dto.Texts_Dialog_WorkProcessNames.Split(',').Select(t => t.Trim()).ToList(),
             };
         }
 
@@ -274,7 +274,7 @@ namespace IsTama.NengaBooster.UI.Gateways
                 LabelPoint_Message = _configValueParser.ToObjectFrom<Point>(dto.LabelPoint_Dialog_Message),
                 ButtonName_Ok = dto.ButtonName_Dialog_Ok,
 
-                Texts_ErrorMessage = eMsg.Split(',').ToArray(),
+                Texts_ErrorMessage = eMsg.Split(',').Select(t => t.Trim()).ToArray(),
             };
         }
 

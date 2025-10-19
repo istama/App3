@@ -56,6 +56,8 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
             var userAccount = await _repositories.UserConfigRepository.GetUserAccountAsync();
             _viewmodel.Toiban = userAccount.UserName;
 
+            // フォームの見た目をロードする。
+            await LoadNengaBoosterFormLookAsync();
             // 右クリックメニューのチェック状態をロードする
             await LoadOperationModeMenuStripCheckStateAsync();
             

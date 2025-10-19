@@ -142,6 +142,15 @@ namespace IsTama.NengaBooster.UI.Gateways
             return ToibanCheckedListClearMode.CheckedOnly;
         }
 
+        /// <summary>
+        /// 出力リストの文字サイズ。
+        /// </summary>
+        public async Task<int> GetToibanCheckedListCharSize()
+        {
+            var dto = await GetUserConfigDTOAsync().ConfigureAwait(false);
+
+            return dto.CheckedToibanListCharSize;
+        }
         
 
         private async Task<UserConfigDTO> GetUserConfigDTOAsync()

@@ -301,7 +301,6 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.ToolStripMenuItem_InformationOpenMode_SearchForm.Size = new System.Drawing.Size(208, 22);
             this.ToolStripMenuItem_InformationOpenMode_SearchForm.Text = "検索結果まで開く";
             this.ToolStripMenuItem_InformationOpenMode_SearchForm.Click += new System.EventHandler(this.MenuItemInformationOpenModeSearchForm_Click);
-
             // 
             // ToolStripMenuItem_InformationOpenMode_DetailWindow
             // 
@@ -442,6 +441,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.ChkListToiban.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ChkListToiban.ContextMenuStrip = this.ContextMenuStrip_ToibanCheckedList;
+            this.ChkListToiban.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ChkListToiban.FormattingEnabled = true;
             this.ChkListToiban.Location = new System.Drawing.Point(14, 217);
             this.ChkListToiban.Name = "ChkListToiban";
@@ -608,10 +608,10 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(241, 6);
             // 
-            // MenuOutputHistory
+            // MenuPrintToibanHistory
             // 
             this.MenuPrintToibanHistory.Enabled = false;
-            this.MenuPrintToibanHistory.Name = "MenuOutputHistory";
+            this.MenuPrintToibanHistory.Name = "MenuPrintToibanHistory";
             this.MenuPrintToibanHistory.Size = new System.Drawing.Size(244, 22);
             this.MenuPrintToibanHistory.Text = "出力履歴";
             this.MenuPrintToibanHistory.Visible = false;

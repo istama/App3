@@ -24,8 +24,9 @@ namespace IsTama.Utils
         /// プロパティ名やメソッド名が変更されてもこのメソッドの引数を変更しなくてすむようになる。
         /// </summary>
         /// <param name="value">プロパティにセットする値</param>
+        /// <param name="shouldAlreadyNotify">valueが同じ値でもPropertyChangedイベントを発生させるかどうか</param>
         /// <param name="propertyName">プロパティ名</param>
-        protected bool SetProperty<T>(T value, [CallerMemberName] string propertyName = "")
+        protected bool SetProperty<T>(T value,  bool shouldAlreadyNotify=false, [CallerMemberName] string propertyName = "")
         {
             if (String.IsNullOrWhiteSpace(propertyName))
                 throw new ArgumentException("propertyName is null, empty or whitespace.");
@@ -33,7 +34,7 @@ namespace IsTama.Utils
             if (_properties.ContainsKey(propertyName))
             {
                 var current_value = GetProperty<T>(propertyName);
-                if (current_value.Equals(value))
+                if (current_value.Equals(value) && !shouldAlreadyNotify)
                     return false;
 
                 _properties[propertyName] = value;

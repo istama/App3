@@ -39,12 +39,15 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             _userConfigRepository = userConfigRepository;
         }
 
-        public async Task<bool> ExecuteAsync(NengaAppWindowBasic nengaAppWindow)
+        public async Task<bool> ExecuteAsync(ApplicationBasicConfig basicConfig, NengaAppWindowBasic nengaAppWindow)
         {
             var nengaMenuConfig = await _applicationConfigRepository.GetNengaMenuConfigAsync().ConfigureAwait(false);
             var nengaMenuWindow = _nengaAppWindowFactory.GetOrCreateNengaMenuWindow(nengaMenuConfig);
 
             var loginConfig = await _applicationConfigRepository.GetLoginFormConfigAsync().ConfigureAwait(false);
+            loginConfig.Basic.ApplicationName_OnNengaMenu = basicConfig.ApplicationName_OnNengaMenu;
+            loginConfig.Basic.ProcessName = basicConfig.ProcessName;
+
             var loginWindow = _nengaAppWindowFactory.GetOrCreateLoginFormWindow(loginConfig);
 
             var userAccount = await _userConfigRepository.GetUserAccountAsync().ConfigureAwait(false);

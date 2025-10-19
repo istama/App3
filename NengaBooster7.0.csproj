@@ -79,10 +79,10 @@
     <Compile Include="src\UI\Gateways\OperationModes\ToibanSelectMode.cs" />
     <Compile Include="src\UI\Gateways\RepositoryImpl\OtherConfigRepository.cs" />
     <Compile Include="src\UI\Gateways\RepositoryImpl\UserConfigReader.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\Dependencies\FormsThatMainFormControllerDependsOn.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\Dependencies\RepositoriesThatMainFormControllerDependsOn.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\Dependencies\UseCasesThatMainFormControllerDependsOn.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\Forms\INengaBoosterConfigForm.cs" />
+    <Compile Include="src\UI\Main\Presentations\Dependencies\FormsThatMainFormControllerDependsOn.cs" />
+    <Compile Include="src\UI\Main\Presentations\Dependencies\RepositoriesThatMainFormControllerDependsOn.cs" />
+    <Compile Include="src\UI\Main\Presentations\Dependencies\UseCasesThatMainFormControllerDependsOn.cs" />
+    <Compile Include="src\UI\Main\Presentations\Forms\INengaBoosterConfigForm.cs" />
     <Compile Include="src\Core\NengaApps\Adapters\IUserAccountForm.cs" />
     <Compile Include="src\Core\NengaApps\Adapters\INativeWindowOperator.cs" />
     <Compile Include="src\Core\NengaApps\Adapters\INativeWindowStates.cs" />
@@ -136,36 +136,36 @@
     <Compile Include="src\UI\Gateways\RepositoryImpl\Mapper\DtoAndViewModelMapper.cs" />
     <Compile Include="src\UI\Gateways\RepositoryImpl\Mapper\NengaBoosterConfigDtoMapper.cs" />
     <Compile Include="src\UI\Gateways\RepositoryImpl\UserConfigRepository.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\Forms\IUserConfigForm.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\MainFormController.Look.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\MainFormController.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\MainFormController.Menu.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\MainFormController.MenuStrip.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\MainFormPresenter.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\MainFormPresenter.MenuStrip.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\MainFormViewModel.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\MainFormViewModel.MenuStrip.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\Signal\ModifierKeysPressingState.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\Signal\ModifierKeysStateNotification.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\Signal\NotifyModifierKeysPressingStateEventArgs.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\ToibanList\ToibanCheckedListHelper.cs" />
-    <Compile Include="src\UI\MainForm\Presentations\ToibanList\ToibanCheckedListItem.cs" />
-    <Compile Include="src\UI\MainForm\View\MainForm.cs">
+    <Compile Include="src\UI\Main\Presentations\Forms\IUserConfigForm.cs" />
+    <Compile Include="src\UI\Main\Presentations\MainFormController.Look.cs" />
+    <Compile Include="src\UI\Main\Presentations\MainFormController.cs" />
+    <Compile Include="src\UI\Main\Presentations\MainFormController.Menu.cs" />
+    <Compile Include="src\UI\Main\Presentations\MainFormController.MenuStrip.cs" />
+    <Compile Include="src\UI\Main\Presentations\MainFormPresenter.cs" />
+    <Compile Include="src\UI\Main\Presentations\MainFormPresenter.MenuStrip.cs" />
+    <Compile Include="src\UI\Main\Presentations\MainFormViewModel.cs" />
+    <Compile Include="src\UI\Main\Presentations\MainFormViewModel.MenuStrip.cs" />
+    <Compile Include="src\UI\Main\Presentations\Signal\ModifierKeysPressingState.cs" />
+    <Compile Include="src\UI\Main\Presentations\Signal\ModifierKeysStateNotification.cs" />
+    <Compile Include="src\UI\Main\Presentations\Signal\NotifyModifierKeysPressingStateEventArgs.cs" />
+    <Compile Include="src\UI\Main\Presentations\ToibanList\ToibanCheckedListHelper.cs" />
+    <Compile Include="src\UI\Main\Presentations\ToibanList\ToibanCheckedListItem.cs" />
+    <Compile Include="src\UI\Main\View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\UI\MainForm\View\MainForm.designer.cs">
+    <Compile Include="src\UI\Main\View\MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\UI\MainForm\View\MainForm.MenuBar.cs">
+    <Compile Include="src\UI\Main\View\MainForm.MenuBar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\UI\MainForm\View\MainForm.MenuStrip.cs">
+    <Compile Include="src\UI\Main\View\MainForm.MenuStrip.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\UI\MainForm\View\MainForm.ToibanCheckedList.cs">
+    <Compile Include="src\UI\Main\View\MainForm.ToibanCheckedList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\UI\MainForm\View\MainForm.ToibanCheckedListMenu.cs">
+    <Compile Include="src\UI\Main\View\MainForm.ToibanCheckedListMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\UI\NengaBoosterConfigSettings\Presentations\Mapper\NengaBoosterConfigDtoAndViewModelMapper.cs" />
@@ -304,7 +304,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\UI\MainForm\View\MainForm.resx">
+    <EmbeddedResource Include="src\UI\Main\View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\UI\NengaBoosterConfigSettings\View\NengaBoosterConfigForm.resx">

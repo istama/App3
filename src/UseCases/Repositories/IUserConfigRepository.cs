@@ -22,6 +22,6 @@ namespace IsTama.NengaBooster.UseCases.Repositories
         Task<bool> ShouldAddToibanToCheckedListWhenInformationSearchAsync();
         Task<bool> ShouldUncheckToibanFromCheckedListWhenEnterToKouseishiAsync();
 
-        
+        Task<int> GetToibanCheckedListCharSize();
     }
 }

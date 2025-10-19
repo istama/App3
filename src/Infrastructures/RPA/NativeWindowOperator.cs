@@ -198,7 +198,10 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
         {
             bool Op(WindowController w, object[] args)
             {
-                var control = GetFormControl(w, (string)args[0]);
+                var control = GetFormControl(w, (Point)args[0]);
+                //System.Windows.Forms.MessageBox.Show("text box size: " + control.GetSize().ToString());
+                //System.Windows.Forms.MessageBox.Show("text box title: " + control.GetText() + " / text: " + (string)args[1]);
+                //control.SetText((string)args[1]);
                 control.SetText((string)args[1]);
                 return true;
             }
@@ -217,7 +220,7 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
                 Thread.Sleep((int)args[0]);
                 return true;
             }
-            return AppendOperation(Op, null);
+            return AppendOperation(Op, waittime_ms);
         }
 
 
@@ -246,6 +249,30 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
 
                 return true;
             }).ConfigureAwait(false);
+        }
+
+        public bool Do()
+        {
+            return Do(0);
+        }
+
+        public bool Do(int waittimeForProcessToExecute)
+        {
+            var w = GetWindowController(waittimeForProcessToExecute);
+
+            foreach (var (operation, args) in _operationList)
+            {
+                var (success, emsg) = Execute(w, operation, args);
+                if (!success)
+                {
+                    if (_shouldThrowException)
+                        throw new NengaBoosterException(emsg);
+                    else
+                        return false;
+                }
+            }
+
+            return true;
         }
 
         private (bool, string) Execute(WindowController w, Func<WindowController, object[], bool> op, object[] args_)

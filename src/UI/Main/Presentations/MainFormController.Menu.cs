@@ -75,7 +75,8 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
             // ユーザー設定が変更されたときに、右クリックメニューのチェック状態を更新する
             if (result != DialogResult.Cancel)
             {
-                await LoadOperationModeMenuStripCheckStateAsync().ConfigureAwait(false);
+                await LoadNengaBoosterFormLookAsync();
+                await LoadOperationModeMenuStripCheckStateAsync();
             }
         }
 
@@ -90,7 +91,8 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
                 // アプリケーション設定が更新されたら、右クリックメニューの表示更新する
                 if (form.DialogResult != DialogResult.Cancel)
                 {
-                    await LoadOperationModeMenuStripCheckStateAsync().ConfigureAwait(false);
+                    await LoadNengaBoosterFormLookAsync();
+                    await LoadOperationModeMenuStripCheckStateAsync();
                 }
             });
         }

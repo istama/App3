@@ -146,6 +146,14 @@ namespace IsTama.NengaBooster.UI.Main.View
 
                 return;
             }
+
+            // 出力リストの文字サイズが更新された場合
+            if (e.PropertyName == nameof(_viewmodel.ToibanCheckedListCharSize))
+            {
+                var size = _viewmodel.ToibanCheckedListCharSize;
+                var newFont = new Font(ChkListToiban.Font.FontFamily, size, ChkListToiban.Font.Style);
+                ChkListToiban.Font = newFont;
+            }
         }
 
         /// <summary>

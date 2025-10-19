@@ -60,7 +60,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             var applicationConfig = await _applicationConfigRepository.GetKouseishiAppilicationConfigAsync().ConfigureAwait(false);
             var window = _nengaAppWindowFactory.GetOrCreateKouseishiWindow(applicationConfig);
 
-            if (!await _loginService.ExecuteAsync(window).ConfigureAwait(false))
+            if (!await _loginService.ExecuteAsync(applicationConfig.Basic, window).ConfigureAwait(false))
                 return;
 
             var dialogConfig = await _applicationConfigRepository.GetKouseishiDialogConfigAsync().ConfigureAwait(false);

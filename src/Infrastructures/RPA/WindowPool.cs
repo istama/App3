@@ -21,11 +21,12 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
         {
         }
 
-
-        public WindowController GetOrCreateWindowController(string windowTitlePattern, int maxWindowWidth, int waittime_ms)
+        public bool TryGetOrCreateWindowController(string windowTitlePattern, int maxWindowWidth, int waittime_ms, out WindowController _controller)
         {
             Assert.IsNullOrWhiteSpace(windowTitlePattern, nameof(windowTitlePattern));
             Assert.IsSmallerThan(maxWindowWidth, 1, nameof(maxWindowWidth));
+
+            _controller = null;
 
             var key = new TitleAndWidth(windowTitlePattern, maxWindowWidth);
 
@@ -34,7 +35,10 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
             {
                 var controller = _controllerBuffer[key];
                 if (controller.Exists())
-                    return controller;
+                {
+                    _controller = controller;
+                    return true;
+                }
             }
 
             var controllers = WindowController
@@ -44,7 +48,7 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
 
             if (controllers.Count == 0)
             {
-                throw new NengaBoosterException($"{windowTitlePattern} のウィンドウが見つかりません。");
+                return false;
             }
 
             var newController = controllers.OrderByDescending(c => c.GetSize().Width).First();
@@ -53,7 +57,19 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
             else
                 _controllerBuffer.Add(key, newController);
 
-            return newController;
+            _controller = newController;
+            return true;
+        }
+
+        public WindowController GetOrCreateWindowController(string windowTitlePattern, int maxWindowWidth, int waittime_ms)
+        {
+            Assert.IsNullOrWhiteSpace(windowTitlePattern, nameof(windowTitlePattern));
+            Assert.IsSmallerThan(maxWindowWidth, 1, nameof(maxWindowWidth));
+
+            if (TryGetOrCreateWindowController(windowTitlePattern, maxWindowWidth, waittime_ms, out var controller))
+                return controller;
+
+            throw new NengaBoosterException($"{windowTitlePattern} のウィンドウが見つかりません。");
         }
     }
 }

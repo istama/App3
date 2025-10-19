@@ -80,7 +80,7 @@ namespace IsTama.Utils
         /// <summary>
         /// 親ウィンドウのテキストを返す。
         /// </summary>
-        public string GetParentWindowText()
+        private string GetParentWindowText()
         {
             var parent = new WindowBase(GetParentWindowHandle());
             return parent.GetText();
@@ -89,7 +89,7 @@ namespace IsTama.Utils
         /// <summary>
         /// ルートのウィンドウのテキストを返す。
         /// </summary>
-        public string GetRootWindowText()
+        private string GetRootWindowText()
         {
             var parent = new WindowBase(GetRootWindowHandle());
             return parent.GetText();

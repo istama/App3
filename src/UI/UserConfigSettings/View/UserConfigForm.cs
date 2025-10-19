@@ -65,14 +65,47 @@ namespace IsTama.NengaBooster.UI.UserConfigSettings.View
             _viewmodelBinder.BindChecked(RadioButtonThatRemoveToibanChecked, nameof(_viewmodel.RemoveToibanCheckedChecked));
             _viewmodelBinder.BindChecked(RadioButtonThatRemoveToibanUnchecked, nameof(_viewmodel.RemoveToibanUncheckedChecked));
 
+            _viewmodel.PropertyChanged += _viewmodel_PropertyChanged;
+            CmbBoxCheckedListCharSize.TextChanged += CmbBoxCheckedListCharSize_TextChanged;
+
             try
             {
-                await _presenter.LoadAsync(_userConfigFilepath).ConfigureAwait(false);
+                await _presenter.LoadAsync(_userConfigFilepath);
+                // ComboBoxの値をロードする
+                InitializeComboBoxValue();
+                
             }
             catch (Exception ex)
             {
                 ErrorMessageBox.Show(ex.ToString());
             }
+        }
+
+        private void _viewmodel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // 出力リストの文字サイズが変更されたとき
+            // ViewmodelとComboBoxの更新のイベントリスナで無限ループになるため実装しない
+            //if (e.PropertyName == nameof(_viewmodel.CheckedToibanListCharSize))
+            //{
+            //    var size = _viewmodel.CheckedToibanListCharSize;
+            //    CmbBoxCheckedListCharSize.Text = size.ToString();
+            //}
+        }
+
+        private void InitializeComboBoxValue()
+        {
+            var size = _viewmodel.CheckedToibanListCharSize;
+            CmbBoxCheckedListCharSize.Text = size.ToString();
+        }
+
+        private void CmbBoxCheckedListCharSize_TextChanged(object sender, EventArgs e)
+        {
+            var idx = CmbBoxCheckedListCharSize.SelectedIndex;
+            if (idx == -1)
+                return;
+
+            var size = (string)CmbBoxCheckedListCharSize.Items[idx];
+            _viewmodel.CheckedToibanListCharSize = int.Parse(size);
         }
 
         private async void BtnSave_Click(object sender, EventArgs e)

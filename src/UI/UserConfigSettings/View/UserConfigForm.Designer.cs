@@ -52,9 +52,11 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.CheckBoxThatUncheckToibanCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.RadioButtonThatRemoveToibanAll = new System.Windows.Forms.RadioButton();
-            this.RadioButtonThatRemoveToibanChecked = new System.Windows.Forms.RadioButton();
             this.RadioButtonThatRemoveToibanUnchecked = new System.Windows.Forms.RadioButton();
+            this.RadioButtonThatRemoveToibanChecked = new System.Windows.Forms.RadioButton();
+            this.RadioButtonThatRemoveToibanAll = new System.Windows.Forms.RadioButton();
+            this.CmbBoxCheckedListCharSize = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -280,7 +282,7 @@
             this.groupBox5.Controls.Add(this.CheckBoxThatUncheckToibanCheckBox);
             this.groupBox5.Location = new System.Drawing.Point(21, 390);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(414, 49);
+            this.groupBox5.Size = new System.Drawing.Size(285, 49);
             this.groupBox5.TabIndex = 15;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "「校正紙ダイレクト出力」に問番を送ったときの動作";
@@ -307,15 +309,15 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "クリアしたときの出力リストの動作";
             // 
-            // RadioButtonThatRemovetToibanAll
+            // RadioButtonThatRemoveToibanUnchecked
             // 
-            this.RadioButtonThatRemoveToibanAll.AutoSize = true;
-            this.RadioButtonThatRemoveToibanAll.Location = new System.Drawing.Point(14, 18);
-            this.RadioButtonThatRemoveToibanAll.Name = "RadioButtonThatRemovetToibanAll";
-            this.RadioButtonThatRemoveToibanAll.Size = new System.Drawing.Size(59, 16);
-            this.RadioButtonThatRemoveToibanAll.TabIndex = 15;
-            this.RadioButtonThatRemoveToibanAll.Text = "全削除";
-            this.RadioButtonThatRemoveToibanAll.UseVisualStyleBackColor = true;
+            this.RadioButtonThatRemoveToibanUnchecked.AutoSize = true;
+            this.RadioButtonThatRemoveToibanUnchecked.Location = new System.Drawing.Point(182, 40);
+            this.RadioButtonThatRemoveToibanUnchecked.Name = "RadioButtonThatRemoveToibanUnchecked";
+            this.RadioButtonThatRemoveToibanUnchecked.Size = new System.Drawing.Size(191, 16);
+            this.RadioButtonThatRemoveToibanUnchecked.TabIndex = 20;
+            this.RadioButtonThatRemoveToibanUnchecked.Text = "チェックの付いてない問番を削除する";
+            this.RadioButtonThatRemoveToibanUnchecked.UseVisualStyleBackColor = true;
             // 
             // RadioButtonThatRemoveToibanChecked
             // 
@@ -324,26 +326,52 @@
             this.RadioButtonThatRemoveToibanChecked.Location = new System.Drawing.Point(14, 40);
             this.RadioButtonThatRemoveToibanChecked.Name = "RadioButtonThatRemoveToibanChecked";
             this.RadioButtonThatRemoveToibanChecked.Size = new System.Drawing.Size(161, 16);
-            this.RadioButtonThatRemoveToibanChecked.TabIndex = 16;
+            this.RadioButtonThatRemoveToibanChecked.TabIndex = 19;
             this.RadioButtonThatRemoveToibanChecked.TabStop = true;
             this.RadioButtonThatRemoveToibanChecked.Text = "チェック付きの問番を削除する";
             this.RadioButtonThatRemoveToibanChecked.UseVisualStyleBackColor = true;
             // 
-            // RadioButtonThatRemoveToibanUnchecked
+            // RadioButtonThatRemoveToibanAll
             // 
-            this.RadioButtonThatRemoveToibanUnchecked.AutoSize = true;
-            this.RadioButtonThatRemoveToibanUnchecked.Location = new System.Drawing.Point(182, 40);
-            this.RadioButtonThatRemoveToibanUnchecked.Name = "RadioButtonThatRemoveToibanUnchecked";
-            this.RadioButtonThatRemoveToibanUnchecked.Size = new System.Drawing.Size(191, 16);
-            this.RadioButtonThatRemoveToibanUnchecked.TabIndex = 17;
-            this.RadioButtonThatRemoveToibanUnchecked.Text = "チェックの付いてない問番を削除する";
-            this.RadioButtonThatRemoveToibanUnchecked.UseVisualStyleBackColor = true;
+            this.RadioButtonThatRemoveToibanAll.AutoSize = true;
+            this.RadioButtonThatRemoveToibanAll.Location = new System.Drawing.Point(14, 18);
+            this.RadioButtonThatRemoveToibanAll.Name = "RadioButtonThatRemoveToibanAll";
+            this.RadioButtonThatRemoveToibanAll.Size = new System.Drawing.Size(59, 16);
+            this.RadioButtonThatRemoveToibanAll.TabIndex = 18;
+            this.RadioButtonThatRemoveToibanAll.Text = "全削除";
+            this.RadioButtonThatRemoveToibanAll.UseVisualStyleBackColor = true;
             // 
-            // UserSettingsForm
+            // CmbBoxCheckedListCharSize
+            // 
+            this.CmbBoxCheckedListCharSize.FormattingEnabled = true;
+            this.CmbBoxCheckedListCharSize.Items.AddRange(new object[] {
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14"});
+            this.CmbBoxCheckedListCharSize.Location = new System.Drawing.Point(374, 409);
+            this.CmbBoxCheckedListCharSize.Name = "CmbBoxCheckedListCharSize";
+            this.CmbBoxCheckedListCharSize.Size = new System.Drawing.Size(61, 20);
+            this.CmbBoxCheckedListCharSize.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(319, 390);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(116, 12);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "出力リストの文字サイズ";
+            // 
+            // UserConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(458, 558);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CmbBoxCheckedListCharSize);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.BtnSave);
@@ -357,7 +385,7 @@
             this.Controls.Add(this.TxtBoxUserName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox3);
-            this.Name = "UserSettingsForm";
+            this.Name = "UserConfigForm";
             this.Text = "ユーザー設定";
             this.Load += new System.EventHandler(this.UserConfigForm_Load);
             this.groupBox1.ResumeLayout(false);
@@ -406,5 +434,7 @@
         private System.Windows.Forms.RadioButton RadioButtonThatRemoveToibanUnchecked;
         private System.Windows.Forms.RadioButton RadioButtonThatRemoveToibanChecked;
         private System.Windows.Forms.RadioButton RadioButtonThatRemoveToibanAll;
+        private System.Windows.Forms.ComboBox CmbBoxCheckedListCharSize;
+        private System.Windows.Forms.Label label4;
     }
 }

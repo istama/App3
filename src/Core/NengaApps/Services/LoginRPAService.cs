@@ -40,7 +40,10 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 // ログインウィンドウが開くまで待機する
                 await loginWindow.ActivateAsync(3000).ConfigureAwait(false);
                 if (!loginWindow.IsOpen(3000))
+                {
+                    //System.Windows.Forms.MessageBox.Show("login window not open");
                     return false;
+                }
             }
 
             // 年賀アプリが開かれてない
@@ -48,7 +51,10 @@ namespace IsTama.NengaBooster.Core.NengaApps
             {
                 // ログインウィンドウも開かれてない場合は何もできないので終了する
                 if (!loginWindow.IsOpen(0))
+                {
+                    //System.Windows.Forms.MessageBox.Show("login window not open2");
                     return false;
+                }
 
                 // ユーザー情報が登録されていない
                 if (!user.IsFilled())
@@ -59,11 +65,19 @@ namespace IsTama.NengaBooster.Core.NengaApps
 
                 // ログインをアクティブにする
                 if (!await loginWindow.ActivateAsync(2000).ConfigureAwait(false))
+                {
+                    //System.Windows.Forms.MessageBox.Show("login window cannot activate");
                     return false;
+                }
 
                 // ユーザー名とパスワードを入力する
-                if (!await loginWindow.EnterUserNameAndPassword(user).ConfigureAwait(false))
+                if (!await loginWindow.EnterUserNameAndPasswordAsync(user).ConfigureAwait(false))
+                {
+                    System.Windows.Forms.MessageBox.Show("fail to enter user account info");
                     return false;
+                }
+
+                //System.Windows.Forms.MessageBox.Show("enter user account info");
 
                 // 年賀アプリが開くまで待機する
                 await nengaAppWindow.ActivateAsync(2000).ConfigureAwait(false);

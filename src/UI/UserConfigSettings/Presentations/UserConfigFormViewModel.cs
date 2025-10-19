@@ -105,5 +105,11 @@ namespace IsTama.NengaBooster.UI.UserConfigSettings.Presentations
             get => base.GetProperty<Boolean>();
             set => base.SetProperty<Boolean>(value);
         }
+
+        public int CheckedToibanListCharSize
+        {
+            get => base.GetProperty<int>();
+            set => base.SetProperty<int>(value);
+        }
     }
 }

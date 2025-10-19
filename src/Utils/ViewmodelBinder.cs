@@ -138,5 +138,6 @@ namespace IsTama.Utils
             if (vm_property != null)
                 vm_property.SetValue(_viewmodel, menu_item.CheckState);
         }
+
     }
 }

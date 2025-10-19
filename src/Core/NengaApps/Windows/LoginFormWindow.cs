@@ -28,7 +28,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
         /// <summary>
         /// アカウント情報を入力する。
         /// </summary>
-        public async Task<bool> EnterUserNameAndPassword(UserAccount user)
+        public async Task<bool> EnterUserNameAndPasswordAsync(UserAccount user)
         {
             if (!base.IsOpen(0))
                 return true;
@@ -36,12 +36,28 @@ namespace IsTama.NengaBooster.Core.NengaApps
             return await WindowOperator
                 .Activate()
                 .Wait(100)
+                //.LeftClick(_config.TextBoxPoint_UserName)
                 .SetText(_config.TextBoxPoint_UserName, user.UserName)
                 .SetText(_config.TextBoxPoint_Password, user.Password)
                 .SendEnterTo(_config.ButtonName_Ok)
                 .ThrowIfFailed()
                 .DoAsync()
                 .ConfigureAwait(false);
+        }
+
+        public bool EnterUserNameAndPassword(UserAccount user)
+        {
+            if (!base.IsOpen(0))
+                return true;
+
+            return WindowOperator
+                .Activate()
+                .Wait(100)
+                .SetText(_config.TextBoxPoint_UserName, user.UserName)
+                .SetText(_config.TextBoxPoint_Password, user.Password)
+                .SendEnterTo(_config.ButtonName_Ok)
+                .ThrowIfFailed()
+                .Do();
         }
     }
 }

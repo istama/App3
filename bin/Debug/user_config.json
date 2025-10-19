@@ -1,18 +1,19 @@
 ﻿{
-  "UserName": "",
-  "Password": "",
+  "UserName": "user",
+  "Password": "pass",
   "KeyReplaceSettingsFilePath": "",
   "SelectToibanByClickChecked": true,
   "SelectToibanByWClickChecked": false,
-  "OpenHensyuMenuOnlyChecked": true,
-  "OpenHensyuTegumiWindowChecked": false,
+  "OpenHensyuMenuOnlyChecked": false,
+  "OpenHensyuTegumiWindowChecked": true,
   "OpenInformationSearchFormOnlyChecked": true,
   "OpenInformationDetailWindowChecked": false,
   "OpenInformationKouseiPageChecked": false,
   "OpenInformationKumihanPageChecked": false,
   "ShouldAddToibanToCheckedListWhenInformationOpenChecked": true,
-  "ShouldUncheckToibanFromCheckedListChecked": true,
+  "ShouldUncheckToibanFromCheckedListChecked": false,
   "RemoveToibanAllChecked": true,
   "RemoveToibanCheckedChecked": false,
-  "RemoveToibanUncheckedChecked": false
+  "RemoveToibanUncheckedChecked": false,
+  "CheckedToibanListCharSize": 9
 }

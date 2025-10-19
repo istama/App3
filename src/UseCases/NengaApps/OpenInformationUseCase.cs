@@ -55,7 +55,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             var infoAppConfig = await _applicationConfigRepository.GetInformationAppilicationConfigAsync().ConfigureAwait(false);
             var infoWindow = _nengaAppWindowFactory.GetOrCreateInformationWindow(infoAppConfig);
 
-            if (!await _loginService.ExecuteAsync(infoWindow).ConfigureAwait(false))
+            if (!await _loginService.ExecuteAsync(infoAppConfig.Basic, infoWindow).ConfigureAwait(false))
                 return;
 
             var detailAppConfig = await _applicationConfigRepository.GetInformationDetailAppilicationConfigAsync().ConfigureAwait(false);

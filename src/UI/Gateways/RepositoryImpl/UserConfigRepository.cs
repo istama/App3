@@ -156,6 +156,15 @@ namespace IsTama.NengaBooster.UI.Gateways
         }
 
         /// <summary>
+        /// 出力リストの文字サイズ。
+        /// </summary>
+        public async Task<int> GetToibanCheckedListCharSize()
+        {
+            var config = await GetOrReadUserConfigAsync().ConfigureAwait(false);
+            return config.ToibanCheckedListCharSize;
+        }
+
+        /// <summary>
         /// バッファに保存したユーザー設定を返すか新たに読み込む。
         /// </summary>
         private async Task<UserConfigBuffer> GetOrReadUserConfigAsync()
@@ -203,6 +212,7 @@ namespace IsTama.NengaBooster.UI.Gateways
                 ShouldUncheckToiban = await reader.ShouldUncheckToibanFromCheckedListWhenEnterToKouseishiAsync(),
 
                 ToibanCheckedListClearMode = await reader.GetToibanCheckedListClearModeAsync(),
+                ToibanCheckedListCharSize = await reader.GetToibanCheckedListCharSize(),
             };
         }
 
@@ -220,6 +230,7 @@ namespace IsTama.NengaBooster.UI.Gateways
             public bool ShouldUncheckToiban { get; set; }
 
             public ToibanCheckedListClearMode ToibanCheckedListClearMode { get; set; }
+            public int ToibanCheckedListCharSize { get; set; }
         }
     }
 }

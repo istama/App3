@@ -106,33 +106,40 @@ namespace IsTama.Utils
 
          */ 
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int SendMessage(
             HandleRef handle,  // メッセージを受け取るウィンドウのハンドル。(この関数によるメッセージの送り先となるウィンドウ)
             int msg,     // 送信するメッセージ
             long wparam,  // 追加のメッセージ固有情報（ウィンドウプロシージャのwParamパラメータ）
             long lparam   // 追加のメッセージ固有情報（ウィンドウプロシージャのlParamパラメータ）
         );
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int SendMessage(
             HandleRef handle,  // メッセージを受け取るウィンドウのハンドル。(この関数によるメッセージの送り先となるウィンドウ)
             int msg,     // 送信するメッセージ
             long wparam,  // 追加のメッセージ固有情報（ウィンドウプロシージャのwParamパラメータ）
             StringBuilder lparam   // 追加のメッセージ固有情報（ウィンドウプロシージャのlParamパラメータ）
         );
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int SendMessage(
             HandleRef handle,  // メッセージを受け取るウィンドウのハンドル。(この関数によるメッセージの送り先となるウィンドウ)
             int msg,     // 送信するメッセージ
             long wparam,  // 追加のメッセージ固有情報（ウィンドウプロシージャのwParamパラメータ）
-            string lparam   // 追加のメッセージ固有情報（ウィンドウプロシージャのlParamパラメータ）
+            [MarshalAs(UnmanagedType.LPWStr)] string lparam   // 追加のメッセージ固有情報（ウィンドウプロシージャのlParamパラメータ）
         );
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int SendMessage(
             HandleRef handle,  // メッセージを受け取るウィンドウのハンドル。(この関数によるメッセージの送り先となるウィンドウ)
             int msg,     // 送信するメッセージ
             long wparam,  // 追加のメッセージ固有情報（ウィンドウプロシージャのwParamパラメータ）
             out LVITEM lparam   // 追加のメッセージ固有情報（ウィンドウプロシージャのlParamパラメータ）
+        );
+        [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern int SendMessageW(
+            HandleRef handle,  // メッセージを受け取るウィンドウのハンドル。(この関数によるメッセージの送り先となるウィンドウ)
+            int msg,     // 送信するメッセージ
+            long wparam,  // 追加のメッセージ固有情報（ウィンドウプロシージャのwParamパラメータ）
+            [MarshalAs(UnmanagedType.LPWStr)] string lparam   // 追加のメッセージ固有情報（ウィンドウプロシージャのlParamパラメータ）
         );
 
         /// <summary>

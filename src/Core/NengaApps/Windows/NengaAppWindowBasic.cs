@@ -92,11 +92,23 @@ namespace IsTama.NengaBooster.Core.NengaApps
         /// </summary>
         public async Task<bool> ActivateAsync(Int32 waittime_ms)
         {
-            if (!IsRunning() || !Exists())
+            if (!IsRunning())
+            {
+                //System.Windows.Forms.MessageBox.Show("window is not running");
                 return false;
+            }
+
+            if (!Exists())
+            {
+                //System.Windows.Forms.MessageBox.Show("window not exists");
+                return false;
+            }
 
             if (!IsOpen(waittime_ms))
+            {
+                //System.Windows.Forms.MessageBox.Show("window is not open");
                 return false;
+            }
 
             return await WindowOperator
                 .Activate()

@@ -55,7 +55,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             var applicationConfig = await _applicationConfigRepository.GetHensyuAppilicationConfigAsync().ConfigureAwait(false);
             var window = _nengaAppWindowFactory.GetOrCreateHensyuWindow(applicationConfig);
 
-            if (!await _loginService.ExecuteAsync(window).ConfigureAwait(false))
+            if (!await _loginService.ExecuteAsync(applicationConfig.Basic, window).ConfigureAwait(false))
                 return;
 
             var dialogConfig = await _applicationConfigRepository.GetHensyuDialogConfigAsync().ConfigureAwait(false);

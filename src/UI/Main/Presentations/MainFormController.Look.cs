@@ -21,6 +21,18 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         private readonly Color _saikumiSignalColor = Color.FromArgb(255, 230, 200);
 
         /// <summary>
+        /// NengaBoosterのフォームの見た目を更新する。
+        /// </summary>
+        public async Task LoadNengaBoosterFormLookAsync()
+        {
+            var repos = _repositories.UserConfigRepository;
+
+            // 出力リストの文字サイズを変更する。
+            var size = await repos.GetToibanCheckedListCharSize();
+            _viewmodel.ToibanCheckedListCharSize = size;
+        }
+
+        /// <summary>
         /// フォームの色を通常モードの色にする。
         /// </summary>
         public void ChangeMainFormColorToNormalMode()
