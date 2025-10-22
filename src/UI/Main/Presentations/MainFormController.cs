@@ -18,6 +18,7 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         private readonly UseCasesThatMainFormControllerDependsOn _usecases;
         private readonly FormsThatMainFormControllerDependsOn _forms;
 
+        private readonly KeyReplacerExecutor _keyReplacerExecutor;
         private readonly ModifierKeysStateNotification _modifierKeysStateNotification;
 
 
@@ -26,17 +27,21 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
             RepositoriesThatMainFormControllerDependsOn repositories,
             UseCasesThatMainFormControllerDependsOn usecases, 
             FormsThatMainFormControllerDependsOn forms,
+            KeyReplacerExecutor keyReplacerExecutor,
             ModifierKeysStateNotification modifierKeysStateNotification)
         {
             Assert.IsNull(viewmodel, nameof(viewmodel));
             Assert.IsNull(repositories, nameof(repositories));
             Assert.IsNull(usecases, nameof(usecases));
             Assert.IsNull(forms, nameof(forms));
+            Assert.IsNull(keyReplacerExecutor, nameof(keyReplacerExecutor));
+            Assert.IsNull(modifierKeysStateNotification, nameof(modifierKeysStateNotification));
 
             _viewmodel = viewmodel;
             _repositories = repositories;
             _usecases = usecases;
             _forms = forms;
+            _keyReplacerExecutor = keyReplacerExecutor;
             _modifierKeysStateNotification = modifierKeysStateNotification;
         }
 
@@ -200,8 +205,9 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         /// </summary>
         public async Task StartScreenSaverStopperAsync()
         {
-            await _usecases.StartScreenSaverStopper.ExecuteAsync().ConfigureAwait(false);
-            
+            await _usecases.StartScreenSaverStopper.ExecuteAsync();
+            _viewmodel.StartScreenSaverStopperButtonEnabled = false;
+            _viewmodel.StopScreenSaverStopperButtonEnabled = true;
         }
 
         /// <summary>
@@ -210,6 +216,25 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         public void StopScreenSaverStopper()
         {
             _usecases.StopScreenSaverStopper.Execute();
+            _viewmodel.StartScreenSaverStopperButtonEnabled = true;
+            _viewmodel.StopScreenSaverStopperButtonEnabled = false;
+        }
+
+        /// <summary>
+        /// KeyReplacerÇãNìÆÇ∑ÇÈÅB
+        /// </summary>
+        public async Task ExecuteKeyReplacerAsync()
+        {
+            var keyReplacerSettingFilepath = await _repositories.UserConfigRepository.GetKeyReplacerSettingsFilepathAsync().ConfigureAwait(false);
+            await _keyReplacerExecutor.ExecuteKeyReplacerAsync(keyReplacerSettingFilepath).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// KeyReplacerÇí‚é~Ç∑ÇÈÅB
+        /// </summary>
+        public void KillKeyReplacer()
+        {
+            _keyReplacerExecutor.KillKeyReplacer();
         }
         
     }

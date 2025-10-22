@@ -44,8 +44,6 @@ namespace IsTama.NengaBooster.AppMain
 
                     var di = new Di();
 
-                    
-                    
                     // Diのテスト
                     //di.TestBuild();
 
@@ -54,6 +52,7 @@ namespace IsTama.NengaBooster.AppMain
                     {
                         var userConfigFilepath = args.Length != 0 ? args[0] : string.Empty;
                         mainform.UserConfigFilepath = userConfigFilepath;
+
 
                         Application.Run(mainform);
                     }

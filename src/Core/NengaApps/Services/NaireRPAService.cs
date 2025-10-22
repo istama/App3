@@ -18,25 +18,6 @@ namespace IsTama.NengaBooster.Core.NengaApps
         {
         }
 
-        // この処理はユースケース層に書くべき
-        //public async Task<bool> EnterToibanAsync(NaireOpenMode openMode, NaireWindow naireWindow, Toiban toiban, DialogWindow dialogWindow, NaireBehaviorConfig config)
-        //{
-        //    // 問番を入力する
-        //    if (!await EnterToibanAsync(naireWindow, toiban, dialogWindow, config))
-        //        return false;
-        //
-        //    // 再組版モードなら
-        //    if (openMode == NaireOpenMode.Saikumi)
-        //    {
-        //        // 組版依頼をかける
-        //        if (!await ExecuteKumihanIraiAsync(naireWindow, dialogWindow, config))
-        //            return false;
-        //
-        //        // TODO ここにNengaBoosterをアクティブにする処理をいれる
-        //    }
-        //
-        //    return true;
-        //}
 
         /// <summary>
         /// 問番を入力する。
@@ -68,7 +49,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
             }
 
             // 問番を入力してデータを開く
-            if (await naireWindow.EnterToibanAsync(toiban).ConfigureAwait(false))
+            if (!await naireWindow.EnterToibanAsync(toiban).ConfigureAwait(false))
             {
                 return false;
             }
@@ -78,11 +59,15 @@ namespace IsTama.NengaBooster.Core.NengaApps
             {
                 // ダイアログにエラーメッセージが含まれる場合
                 if (dialogWindow.IsErrorDialog())
+                {
                     return false;
+                }
 
                 // ダイアログのメッセージに確認不要な工程名が含まれる場合、ダイアログを閉じる
                 if (dialogWindow.Contains(config.Texts_Dialog_WorkProcessNames))
+                {
                     await dialogWindow.OkAsync().ConfigureAwait(false);
+                }
             }
 
             // 行程違いのダイアログが表示されてもtrueを返す理由:

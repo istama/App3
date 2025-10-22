@@ -10,6 +10,12 @@ using System.Threading.Tasks;
 
 namespace IsTama.Utils
 {
+    /**
+     * Win32Apiの関数はこのアプリケーションが32bitでビルドされていると、正しく動作しないものがある。
+     * 64biでビルドすること。
+     * Visual Studioを使っている場合は、プロパティのビルド設定からこの設定ができる。
+     */
+     
     sealed class WindowController : WindowBase
     {
         public static bool IsActivated(string window_title_pattern)

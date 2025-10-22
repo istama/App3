@@ -192,7 +192,8 @@ namespace IsTama.NengaBooster.UI.Main.View
             await _controller.LoadUserConfigAsync(UserConfigFilepath);
             // 修飾キーの状態を通知するタスクを起動する
             _controller.StartTaskToNotifyModifierKeysState();
-            // TODO KeyReplacerを起動する
+            // KeyReplacerを起動する
+            await _controller.ExecuteKeyReplacerAsync();
 
         }
 
@@ -220,8 +221,8 @@ namespace IsTama.NengaBooster.UI.Main.View
 
         void MainFormClosing(object sender, System.EventArgs e)
         {
-            //_controller.KillKeyReplacer();
             _controller.StopTaskToNotifyModifierKeysState();
+            _controller.KillKeyReplacer();
         }
     
         /// <summary>
@@ -358,7 +359,7 @@ namespace IsTama.NengaBooster.UI.Main.View
         /// </summary>
         private void Btn1Click(object sender, EventArgs e)
         {
-            ShowErrorIfThrowException(() => _controller.EnterToibanToNaireAsync());
+            ShowErrorIfThrowException(async () => await _controller.EnterToibanToNaireAsync());
         }
     
         /// <summary>

@@ -36,7 +36,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
             return await WindowOperator
                 .Activate()
                 .Wait(100)
-                //.LeftClick(_config.TextBoxPoint_UserName)
+                .Focus(_config.TextBoxPoint_UserName)
                 .SetText(_config.TextBoxPoint_UserName, user.UserName)
                 .SetText(_config.TextBoxPoint_Password, user.Password)
                 .SendEnterTo(_config.ButtonName_Ok)
@@ -45,19 +45,5 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 .ConfigureAwait(false);
         }
 
-        public bool EnterUserNameAndPassword(UserAccount user)
-        {
-            if (!base.IsOpen(0))
-                return true;
-
-            return WindowOperator
-                .Activate()
-                .Wait(100)
-                .SetText(_config.TextBoxPoint_UserName, user.UserName)
-                .SetText(_config.TextBoxPoint_Password, user.Password)
-                .SendEnterTo(_config.ButtonName_Ok)
-                .ThrowIfFailed()
-                .Do();
-        }
     }
 }

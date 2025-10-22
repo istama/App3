@@ -56,11 +56,15 @@ namespace IsTama.NengaBooster.Core.NengaApps
             {
                 // ダイアログにエラーメッセージが含まれる場合
                 if (dialogWindow.IsErrorDialog())
+                {
                     return false;
+                }
 
                 // ダイアログに確認不要な工程が含まれている場合、ダイアログを閉じる
                 if (dialogWindow.Contains(config.Texts_Dialog_WorkProcessNames))
+                {
                     await dialogWindow.OkAsync().ConfigureAwait(false);
+                }
             }
 
             return true;

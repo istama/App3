@@ -70,7 +70,7 @@ namespace IsTama.Utils
         public string GetText()
         {
             var window_text = new StringBuilder(256);
-            NativeWindowInformation.SendMessage(_handle, NativeWindowInformation.WM_GETTEXT, window_text.Capacity, window_text);
+            NativeWindowInformation.SendMessageW(_handle, NativeWindowInformation.WM_GETTEXT, window_text.Capacity, window_text);
             if (string.IsNullOrWhiteSpace(window_text.ToString()))
                 NativeWindowInformation.GetWindowText(_handle, window_text, 256);
 

@@ -10,7 +10,7 @@ namespace IsTama.NengaBooster.UseCases.Repositories
     interface IOtherConfigRepository
     {
         Task<string> GetUserConfigFilepathAsync();
-        Task<string> GetKeyReplacerSettingFilepathAsync();
+        Task<string> GetKeyReplacerExeFilepathAsync();
         Task<ScreenSaverStopperPeriods> GetScreenSaverStopperPeriodsAsync();
 
         Task SetUserConfigFilepathAsync(string userConfigFilepath);

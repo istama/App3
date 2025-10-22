@@ -37,6 +37,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
             // 問番を入力して開く
             return await WindowOperator
                 .Activate()
+                .Focus(_config.TextBoxPoint_Toiban)
                 .SetText(_config.TextBoxPoint_Toiban, toiban)
                 .Wait(50)
                 .SendEnterTo(_config.ButtonName_Open)

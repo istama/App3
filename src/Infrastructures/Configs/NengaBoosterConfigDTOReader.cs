@@ -44,7 +44,6 @@ namespace IsTama.NengaBooster.Infrastructures.Configs
                 : new NengaBoosterConfigDTO();
         
             _dtoForCache = dto;
-            //System.Windows.Forms.MessageBox.Show(_dtoForCache.Path_UserSettingsFile);
 
             if (fileExists)
                 _lastWriteTime = _reader.GetLastWriteTime();
@@ -58,7 +57,6 @@ namespace IsTama.NengaBooster.Infrastructures.Configs
         public bool IsUpdated()
         {
             var fileExists = _reader.FileExists();
-            //System.Windows.Forms.MessageBox.Show($"currentTime {_reader.GetLastWriteTime().ToString()} / lastTime {_lastWriteTime.ToString()}");
             return fileExists && _reader.GetLastWriteTime() > _lastWriteTime;
         }
 

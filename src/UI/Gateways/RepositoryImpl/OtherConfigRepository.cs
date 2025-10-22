@@ -41,7 +41,7 @@ namespace IsTama.NengaBooster.UI.Gateways
             buffer.Path_UserSettingsFile = userConfigFilepath;
         }
 
-        public async Task<string> GetKeyReplacerSettingFilepathAsync()
+        public async Task<string> GetKeyReplacerExeFilepathAsync()
         {
             var buffer = await GetOrReadUserConfigAsync().ConfigureAwait(false);
             return buffer.Path_KeyReplacerExeFile;

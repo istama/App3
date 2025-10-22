@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IsTama.NengaBooster.Core.Configs;
+using IsTama.NengaBooster.Error;
 using IsTama.Utils;
 
 namespace IsTama.NengaBooster.Core.NengaApps
@@ -34,21 +35,16 @@ namespace IsTama.NengaBooster.Core.NengaApps
         }
 
         /// <summary>
-        /// 引数のテキストの配列のうち、１つでもダイアログのメッセージに部分的にでも含まれていればtrueを返す。
-        /// </summary>
-        public Boolean Contains(params string[] texts)
-        {
-            return Contains(texts);
-        }
-
-        /// <summary>
         /// 引数のテキストのコレクションのうち、１つでもダイアログのメッセージに部分的にでも含まれていればtrueを返す。
         /// </summary>
         public Boolean Contains(IEnumerable<string> texts)
         {
-            var message = WindowStates
-                .GetFormControlStatesArray(_config.LabelPoint_Message)[0]
-                .GetText();
+            var controls = WindowStates.GetFormControlStatesArray(_config.LabelPoint_Message);
+            if (controls.Length == 0)
+                throw new NengaBoosterException("ダイアログのラベルを取得できません。");
+
+            var control = controls.First();
+            var message = control.GetText();
 
             return texts.Any(text => message.Contains(text));
         }

@@ -151,6 +151,7 @@ namespace IsTama.Utils
             //NativeWindowInformation.SendMessageA(_handle, NativeWindowInfomation.WM_SETTEXT, 0, text);
             //NativeWindowInformation.SendMessageW(_handle, NativeWindowInformation.WM_SETTEXT, 0, text);
             NativeWindowInformation.SendMessage(_handle, NativeWindowInformation.WM_SETTEXT, 0, text);
+            //NativeWindowInformation.PostMessage(_handle, NativeWindowInformation.WM_SETTEXT, 0, text);
         }
 
         /// <summary>

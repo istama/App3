@@ -35,13 +35,14 @@ namespace IsTama.NengaBooster.Core.NengaApps
             {
                 // 年賀アプリを起動する
                 if (!await nengaMenuWindow.ExecuteNengaAppAsync(nengaAppWindow.GetNengaApplicationNameOnNengaMenu()).ConfigureAwait(false))
+                {
                     return false;
+                }
 
                 // ログインウィンドウが開くまで待機する
                 await loginWindow.ActivateAsync(3000).ConfigureAwait(false);
                 if (!loginWindow.IsOpen(3000))
                 {
-                    //System.Windows.Forms.MessageBox.Show("login window not open");
                     return false;
                 }
             }
@@ -52,7 +53,6 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 // ログインウィンドウも開かれてない場合は何もできないので終了する
                 if (!loginWindow.IsOpen(0))
                 {
-                    //System.Windows.Forms.MessageBox.Show("login window not open2");
                     return false;
                 }
 
@@ -66,14 +66,12 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 // ログインをアクティブにする
                 if (!await loginWindow.ActivateAsync(2000).ConfigureAwait(false))
                 {
-                    //System.Windows.Forms.MessageBox.Show("login window cannot activate");
                     return false;
                 }
 
                 // ユーザー名とパスワードを入力する
                 if (!await loginWindow.EnterUserNameAndPasswordAsync(user).ConfigureAwait(false))
                 {
-                    System.Windows.Forms.MessageBox.Show("fail to enter user account info");
                     return false;
                 }
 
@@ -82,12 +80,12 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 // 年賀アプリが開くまで待機する
                 await nengaAppWindow.ActivateAsync(2000).ConfigureAwait(false);
                 if (!nengaAppWindow.IsOpen(250))
+                {
                     return false;
+                }
             }
 
             return true;
-            // 年賀アプリに問番を入力する
-            //return await nengaWindow.OpenAsync(toiban).ConfigureAwait(false);
         }
     }
 }

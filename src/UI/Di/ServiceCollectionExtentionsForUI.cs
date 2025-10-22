@@ -60,6 +60,7 @@ namespace IsTama.NengaBooster.UI.Di
             services.AddSingleton<UseCasesThatMainFormControllerDependsOn>();
             services.AddSingleton<FormsThatMainFormControllerDependsOn>();
 
+            services.AddSingleton<KeyReplacerExecutor>();
             services.AddSingleton<ModifierKeysStateNotification>();
 
             services.AddSingleton<MainFormController>();
