@@ -173,6 +173,23 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         }
 
         /// <summary>
+        /// 引数の問番のチェックの状態をセットする。
+        /// </summary>
+        public ToibanCheckedListHelper SetCheckTo(Toiban toiban, bool check)
+        {
+            var index = 0;
+            foreach (var item in _toibanList)
+            {
+                if (toiban == item.Toiban)
+                {
+                    return SetCheckAt(index, check);
+                }
+                index += 1;
+            }
+            return this;
+        }
+
+        /// <summary>
         /// 引数のインデックスの要素のチェックの状態をセットする。
         /// </summary>
         public ToibanCheckedListHelper SetCheckAt(Int32 idx, bool check)

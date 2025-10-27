@@ -207,7 +207,7 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         public void ReverseCheckStateAllInCheckedList()
         {
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            _viewmodel.ToibanCheckedList = helper.ReverseCheckAll().ToRawDataList();
+            UpdateToibanCheckedList(helper.ReverseCheckAll());
         }
     }
 }

@@ -329,7 +329,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.BtnPrintKouseishi.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BtnPrintKouseishi.ContextMenuStrip = this.ContextMenuStrip_PrintToiban;
             this.BtnPrintKouseishi.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.BtnPrintKouseishi.Location = new System.Drawing.Point(12, 500);
+            this.BtnPrintKouseishi.Location = new System.Drawing.Point(12, 490);
             this.BtnPrintKouseishi.Name = "BtnPrintKouseishi";
             this.BtnPrintKouseishi.Size = new System.Drawing.Size(50, 23);
             this.BtnPrintKouseishi.TabIndex = 15;
@@ -356,7 +356,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.BtnRemoveToiban.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnRemoveToiban.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BtnRemoveToiban.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.BtnRemoveToiban.Location = new System.Drawing.Point(68, 500);
+            this.BtnRemoveToiban.Location = new System.Drawing.Point(68, 490);
             this.BtnRemoveToiban.Name = "BtnRemoveToiban";
             this.BtnRemoveToiban.Size = new System.Drawing.Size(50, 23);
             this.BtnRemoveToiban.TabIndex = 16;
@@ -370,7 +370,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.BtnClearToibanList.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BtnClearToibanList.ContextMenuStrip = this.ContextMenuStrip_ClearToibanCheckedList;
             this.BtnClearToibanList.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.BtnClearToibanList.Location = new System.Drawing.Point(124, 500);
+            this.BtnClearToibanList.Location = new System.Drawing.Point(124, 490);
             this.BtnClearToibanList.Name = "BtnClearToibanList";
             this.BtnClearToibanList.Size = new System.Drawing.Size(50, 23);
             this.BtnClearToibanList.TabIndex = 17;
@@ -415,7 +415,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.BtnRaiseToiban.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnRaiseToiban.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BtnRaiseToiban.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.BtnRaiseToiban.Location = new System.Drawing.Point(13, 472);
+            this.BtnRaiseToiban.Location = new System.Drawing.Point(13, 462);
             this.BtnRaiseToiban.Name = "BtnRaiseToiban";
             this.BtnRaiseToiban.Size = new System.Drawing.Size(78, 23);
             this.BtnRaiseToiban.TabIndex = 10;
@@ -428,7 +428,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.BtnLowerToiban.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnLowerToiban.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BtnLowerToiban.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.BtnLowerToiban.Location = new System.Drawing.Point(96, 472);
+            this.BtnLowerToiban.Location = new System.Drawing.Point(96, 462);
             this.BtnLowerToiban.Name = "BtnLowerToiban";
             this.BtnLowerToiban.Size = new System.Drawing.Size(78, 23);
             this.BtnLowerToiban.TabIndex = 11;
@@ -444,9 +444,10 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.ChkListToiban.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ChkListToiban.FormattingEnabled = true;
             this.ChkListToiban.Location = new System.Drawing.Point(14, 217);
+            this.ChkListToiban.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.ChkListToiban.Name = "ChkListToiban";
             this.ChkListToiban.ScrollAlwaysVisible = true;
-            this.ChkListToiban.Size = new System.Drawing.Size(162, 214);
+            this.ChkListToiban.Size = new System.Drawing.Size(162, 200);
             this.ChkListToiban.TabIndex = 8;
             this.ChkListToiban.SelectedIndexChanged += new System.EventHandler(this.ChkListToiban_SelectedIndexChanged);
             // 
@@ -504,7 +505,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             // 
             this.LblCheckedToibanCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblCheckedToibanCount.AutoSize = true;
-            this.LblCheckedToibanCount.Location = new System.Drawing.Point(145, 454);
+            this.LblCheckedToibanCount.Location = new System.Drawing.Point(145, 444);
             this.LblCheckedToibanCount.Name = "LblCheckedToibanCount";
             this.LblCheckedToibanCount.Size = new System.Drawing.Size(17, 12);
             this.LblCheckedToibanCount.TabIndex = 11;
@@ -718,7 +719,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 454);
+            this.label1.Location = new System.Drawing.Point(162, 444);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 12);
             this.label1.TabIndex = 13;
@@ -851,7 +852,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.LabelLeftCtrlSignal.AutoSize = true;
             this.LabelLeftCtrlSignal.BackColor = System.Drawing.Color.Teal;
             this.LabelLeftCtrlSignal.ForeColor = System.Drawing.SystemColors.Control;
-            this.LabelLeftCtrlSignal.Location = new System.Drawing.Point(13, 530);
+            this.LabelLeftCtrlSignal.Location = new System.Drawing.Point(13, 520);
             this.LabelLeftCtrlSignal.Name = "LabelLeftCtrlSignal";
             this.LabelLeftCtrlSignal.Padding = new System.Windows.Forms.Padding(3, 2, 2, 2);
             this.LabelLeftCtrlSignal.Size = new System.Drawing.Size(18, 16);
@@ -864,7 +865,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.LabelLeftShiftSignal.AutoSize = true;
             this.LabelLeftShiftSignal.BackColor = System.Drawing.Color.Teal;
             this.LabelLeftShiftSignal.ForeColor = System.Drawing.SystemColors.Control;
-            this.LabelLeftShiftSignal.Location = new System.Drawing.Point(36, 530);
+            this.LabelLeftShiftSignal.Location = new System.Drawing.Point(36, 520);
             this.LabelLeftShiftSignal.Name = "LabelLeftShiftSignal";
             this.LabelLeftShiftSignal.Padding = new System.Windows.Forms.Padding(3, 2, 2, 2);
             this.LabelLeftShiftSignal.Size = new System.Drawing.Size(17, 16);
@@ -877,7 +878,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.LabelLeftAltSignal.AutoSize = true;
             this.LabelLeftAltSignal.BackColor = System.Drawing.Color.Teal;
             this.LabelLeftAltSignal.ForeColor = System.Drawing.SystemColors.Control;
-            this.LabelLeftAltSignal.Location = new System.Drawing.Point(59, 530);
+            this.LabelLeftAltSignal.Location = new System.Drawing.Point(59, 520);
             this.LabelLeftAltSignal.Name = "LabelLeftAltSignal";
             this.LabelLeftAltSignal.Padding = new System.Windows.Forms.Padding(3, 2, 2, 2);
             this.LabelLeftAltSignal.Size = new System.Drawing.Size(18, 16);
@@ -890,7 +891,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.LabelRightAltSignal.AutoSize = true;
             this.LabelRightAltSignal.BackColor = System.Drawing.Color.Teal;
             this.LabelRightAltSignal.ForeColor = System.Drawing.SystemColors.Control;
-            this.LabelRightAltSignal.Location = new System.Drawing.Point(156, 530);
+            this.LabelRightAltSignal.Location = new System.Drawing.Point(156, 520);
             this.LabelRightAltSignal.Name = "LabelRightAltSignal";
             this.LabelRightAltSignal.Padding = new System.Windows.Forms.Padding(3, 2, 2, 2);
             this.LabelRightAltSignal.Size = new System.Drawing.Size(18, 16);
@@ -903,7 +904,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.LabelRightShiftSignal.AutoSize = true;
             this.LabelRightShiftSignal.BackColor = System.Drawing.Color.Teal;
             this.LabelRightShiftSignal.ForeColor = System.Drawing.SystemColors.Control;
-            this.LabelRightShiftSignal.Location = new System.Drawing.Point(133, 530);
+            this.LabelRightShiftSignal.Location = new System.Drawing.Point(133, 520);
             this.LabelRightShiftSignal.Name = "LabelRightShiftSignal";
             this.LabelRightShiftSignal.Padding = new System.Windows.Forms.Padding(3, 2, 2, 2);
             this.LabelRightShiftSignal.Size = new System.Drawing.Size(17, 16);
@@ -916,7 +917,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.LabelRightCtrlSignal.AutoSize = true;
             this.LabelRightCtrlSignal.BackColor = System.Drawing.Color.Teal;
             this.LabelRightCtrlSignal.ForeColor = System.Drawing.SystemColors.Control;
-            this.LabelRightCtrlSignal.Location = new System.Drawing.Point(110, 530);
+            this.LabelRightCtrlSignal.Location = new System.Drawing.Point(110, 520);
             this.LabelRightCtrlSignal.Name = "LabelRightCtrlSignal";
             this.LabelRightCtrlSignal.Padding = new System.Windows.Forms.Padding(3, 2, 2, 2);
             this.LabelRightCtrlSignal.Size = new System.Drawing.Size(18, 16);
@@ -940,7 +941,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(191, 552);
+            this.ClientSize = new System.Drawing.Size(191, 542);
             this.Controls.Add(this.BtnStopScreenSaverStopper);
             this.Controls.Add(this.LabelRightCtrlSignal);
             this.Controls.Add(this.LabelRightShiftSignal);

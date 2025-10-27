@@ -33,6 +33,9 @@ namespace IsTama.NengaBooster.Core.NengaApps
             if (!IsRunning() || !Exists())
                 return false;
 
+            if (!await ActivateAsync(waitTimeForWindowToOpen_ms).ConfigureAwait(false))
+                return false;
+
             if (!IsOpen(waitTimeForWindowToOpen_ms))
                 return false;
 
@@ -50,6 +53,9 @@ namespace IsTama.NengaBooster.Core.NengaApps
         public async Task<Boolean> OpenKumihanPageAsync(int waitTimeForWindowToOpen_ms)
         {
             if (!IsRunning() || !Exists())
+                return false;
+
+            if (!await ActivateAsync(waitTimeForWindowToOpen_ms).ConfigureAwait(false))
                 return false;
 
             if (!IsOpen(waitTimeForWindowToOpen_ms))

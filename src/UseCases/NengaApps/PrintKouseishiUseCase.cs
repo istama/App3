@@ -58,33 +58,40 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
         public async Task ExecuteAsync(List<Toiban> toibanList)
         {
             var applicationConfig = await _applicationConfigRepository.GetKouseishiAppilicationConfigAsync().ConfigureAwait(false);
-            var window = _nengaAppWindowFactory.GetOrCreateKouseishiWindow(applicationConfig);
+            var kouseishiWindow = _nengaAppWindowFactory.GetOrCreateKouseishiWindow(applicationConfig);
 
-            if (!await _loginService.ExecuteAsync(applicationConfig.Basic, window).ConfigureAwait(false))
-                return;
+            if (!kouseishiWindow.IsOpen(0))
+            {
+                if (!await _loginService.ExecuteAsync(applicationConfig.Basic, kouseishiWindow).ConfigureAwait(false))
+                {
+                    return;
+                }
+            }
 
             var dialogConfig = await _applicationConfigRepository.GetKouseishiDialogConfigAsync().ConfigureAwait(false);
             var dialog = _nengaAppWindowFactory.GetOrCreateKouseishiDialogWindow(dialogConfig);
 
-            var behaviorConfig = await _behaviorConfigRepository.GetKouseishiBehaviorConfigAsync().ConfigureAwait(false);
             var shouldUncheck = await _userConfigRepository.ShouldUncheckToibanFromCheckedListWhenEnterToKouseishiAsync().ConfigureAwait(false);
 
             for (var i = 0; i < toibanList.Count; i++)
             {
                 var toiban = toibanList[i];
-                if (!await _kouseishiRPAService.EnterToibanAsync(window, toiban, dialog).ConfigureAwait(false))
+                if (!await _kouseishiRPAService.EnterToibanAsync(kouseishiWindow, toiban, dialog).ConfigureAwait(false))
+                {
                     return;
+                }
 
+                // 動作モードが「出力リストのチェックを外す」の場合
                 if (shouldUncheck)
                 {
-                    _presenter.UncheckToibanFromCheckedListAt(i);
+                    _presenter.UncheckToibanFromCheckedListAt(toiban);
                 }
 
                 // 最後の問番の場合
                 if (i >= toibanList.Count)
                     break;
 
-                //await Task.Delay(behaviorConfig.WaitTime_NextToibanSend).ConfigureAwait(false);
+                await Task.Delay(10).ConfigureAwait(false);
             }
         }
     }

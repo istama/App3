@@ -16,9 +16,9 @@ namespace IsTama.NengaBooster.UseCases.Presenters
         void AddToibanToCheckedList(Toiban toiban);
 
         /// <summary>
-        /// 出力リストから指定インデックスの問番のチェックを外す。
+        /// 出力リストから指定の問番のチェックを外す。
         /// </summary>
-        void UncheckToibanFromCheckedListAt(int index);
+        void UncheckToibanFromCheckedListAt(Toiban index);
 
         //void CheckToNaireMode(NaireOpenMode mode);
         //void CheckToHensyuOpenMode(HensyuOpenMode mode);

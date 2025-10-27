@@ -191,7 +191,7 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
 
                 return true;
             }
-            return AppendOperation(Op, controlPoint);
+            return AppendOperation(Op, controlPoint, _keyboard);
         }
 
         public INativeWindowOperator SetText(Point controlPoint, string text)
@@ -199,9 +199,6 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
             bool Op(WindowController w, object[] args)
             {
                 var control = GetFormControl(w, (Point)args[0]);
-                //System.Windows.Forms.MessageBox.Show("text box size: " + control.GetSize().ToString());
-                //System.Windows.Forms.MessageBox.Show("text box title: " + control.GetText() + " / text: " + (string)args[1]);
-                //control.SetText((string)args[1]);
                 control.SetText((string)args[1]);
                 return true;
             }

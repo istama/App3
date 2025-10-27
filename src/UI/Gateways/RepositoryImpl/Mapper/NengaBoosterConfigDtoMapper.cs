@@ -153,6 +153,9 @@ namespace IsTama.NengaBooster.UI.Gateways
             {
                 Basic = new ApplicationBasicConfig
                 {
+                    ApplicationName_OnNengaMenu = String.Empty,
+                    ProcessName = String.Empty,
+
                     WindowTitlePattern = dto.WindowTitlePattern_InformationDetail,
                     WindowWidth = dto.WindowWidth_InformationDetail,
                 },
@@ -207,6 +210,7 @@ namespace IsTama.NengaBooster.UI.Gateways
                 {
                     ApplicationName_OnNengaMenu = String.Empty,
                     ProcessName = String.Empty,
+
                     WindowTitlePattern = dto.WindowTitlePattern_LoginForm,
                     WindowWidth = dto.WindowWidth_LoginForm,
                 },
@@ -266,6 +270,7 @@ namespace IsTama.NengaBooster.UI.Gateways
                 {
                     ApplicationName_OnNengaMenu = String.Empty,
                     ProcessName = String.Empty,
+
                     WindowTitlePattern = title,
                     WindowWidth = width,
                 },

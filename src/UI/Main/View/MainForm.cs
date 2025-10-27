@@ -28,7 +28,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             InitializeComponent();
 
             // タスクバーに表示されるアイコンを読み込んで設定する
-            //this.Icon = MyResource.GetIcon("ngb.ico");
+            this.Icon = MyResource.GetIcon("ngb.ico");
 
             _viewmodel = viewmodel;
             _controller = controller;
@@ -150,9 +150,41 @@ namespace IsTama.NengaBooster.UI.Main.View
             // 出力リストの文字サイズが更新された場合
             if (e.PropertyName == nameof(_viewmodel.ToibanCheckedListCharSize))
             {
-                var size = _viewmodel.ToibanCheckedListCharSize;
-                var newFont = new Font(ChkListToiban.Font.FontFamily, size, ChkListToiban.Font.Style);
-                ChkListToiban.Font = newFont;
+                // フォームの描画処理を一時停止する
+                // ※この処理を呼び出す理由は。フォームやコントロールのプロパティを変更すると
+                //   その度に画面が描画されちらつくので、それを抑えるため
+                this.SuspendLayout();
+
+                try
+                {
+                    // フォントサイズ変更後の出力リストの高さを計算
+                    var newCheckedListBoxHeight = LblCheckedToibanCount.Location.Y - 5 - ChkListToiban.Location.Y;
+
+                    // フォントサイズを変更する
+                    var size = _viewmodel.ToibanCheckedListCharSize;
+                    var newFont = new Font(ChkListToiban.Font.FontFamily, size, ChkListToiban.Font.Style);
+                    ChkListToiban.Font = newFont;
+
+                    // 出力リストの高さを設定しなおす
+                    ChkListToiban.Height = newCheckedListBoxHeight;
+
+                    /*
+                     * 出力リストの文字サイズを変更すると、フォームの表示を最小化したあとに元に戻したときに
+                     * CheckedListBoxのAnchorプロパティがBottomに設定されていると、表示がフォームの下まで突き抜けるバグがある。
+                     * おそらくCheckedListBoxの高さ計算が正しく処理されていないことに起因する。
+                     * それを抑えるため、CheckedListBoxの高さを再設定し、フォームの高さを変更することで
+                     * Anchor.Bottomが正しく機能することになる。
+                     */
+
+                    // CheckedListBoxの高さが正しく表示させるために必要な処理で、フォームの高さを瞬間的に変更する
+                    this.Height += 1;
+                    this.Height -= 1;
+                }
+                finally
+                {
+                    // 描画処理が一時停止されていた間に変更された部分をまとめて描画する
+                    this.ResumeLayout();
+                }
             }
         }
 
@@ -190,9 +222,9 @@ namespace IsTama.NengaBooster.UI.Main.View
 
             // ユーザー設定をロードする
             await _controller.LoadUserConfigAsync(UserConfigFilepath);
-            // 修飾キーの状態を通知するタスクを起動する
+            //// 修飾キーの状態を通知するタスクを起動する
             _controller.StartTaskToNotifyModifierKeysState();
-            // KeyReplacerを起動する
+            //// KeyReplacerを起動する
             await _controller.ExecuteKeyReplacerAsync();
 
         }

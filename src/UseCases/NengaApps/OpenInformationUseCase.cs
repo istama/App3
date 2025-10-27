@@ -52,21 +52,35 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
 
         public async Task ExecuteAsync(Toiban toiban)
         {
+            var detailAppConfig = await _applicationConfigRepository.GetInformationDetailAppilicationConfigAsync().ConfigureAwait(false);
+            var detailWindow = _nengaAppWindowFactory.GetOrCreateInformationDetailWindow(detailAppConfig);
+
+            // 詳細ウィンドウがすでに開かれているなら閉じる
+            if (detailWindow.IsOpen(0))
+            {
+                await detailWindow.CloseAsync().ConfigureAwait(false);
+            }
+
             var infoAppConfig = await _applicationConfigRepository.GetInformationAppilicationConfigAsync().ConfigureAwait(false);
             var infoWindow = _nengaAppWindowFactory.GetOrCreateInformationWindow(infoAppConfig);
 
-            if (!await _loginService.ExecuteAsync(infoAppConfig.Basic, infoWindow).ConfigureAwait(false))
-                return;
-
-            var detailAppConfig = await _applicationConfigRepository.GetInformationDetailAppilicationConfigAsync().ConfigureAwait(false);
-            var detailWindow = _nengaAppWindowFactory.GetOrCreateInformationDetailWindow(detailAppConfig);
+            // 検索ウィンドウが開かれていないならログインする
+            if (!infoWindow.IsOpen(0))
+            {
+                if (!await _loginService.ExecuteAsync(infoAppConfig.Basic, infoWindow).ConfigureAwait(false))
+                    return;
+            }
 
             var dialogConfig = await _applicationConfigRepository.GetInformationDialogConfigAsync().ConfigureAwait(false);
             var dialog = _nengaAppWindowFactory.GetOrCreateInformationDialogWindow(dialogConfig);
 
+            // インフォメーション検索に問番を入力する
             if (!await _infoRPAService.EnterToibanAsync(infoWindow, toiban, detailWindow, dialog).ConfigureAwait(false))
+            {
                 return;
+            }
 
+            // 動作モードが詳細ウィンドウを開く設定か
             var openMode = await _userConfigRepository.GetInformationOpenModeAsync().ConfigureAwait(false);
             if (openMode == InformationOpenMode.DetailWindow)
             {
@@ -81,6 +95,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
                 await _infoRPAService.OpenKumihanPageAsync(infoWindow, detailWindow).ConfigureAwait(false);
             }
 
+            // 問番を出力リストに追加する設定か
             var shouldAddToibanToCheckedList = await _userConfigRepository.ShouldAddToibanToCheckedListWhenInformationSearchAsync().ConfigureAwait(false);
             if (shouldAddToibanToCheckedList)
             {

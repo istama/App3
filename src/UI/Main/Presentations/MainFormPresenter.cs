@@ -26,14 +26,22 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         public void AddToibanToCheckedList(Toiban toiban)
         {
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            _viewmodel.ToibanCheckedList = helper.AppendIfNothing(_viewmodel.Toiban).ToRawDataList();
+            UpdateToibanCheckedList(helper.AppendIfNothing(_viewmodel.Toiban));
         }
 
-        public void UncheckToibanFromCheckedListAt(int index)
+        public void UncheckToibanFromCheckedListAt(Toiban toiban)
         {
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            _viewmodel.ToibanCheckedList = helper.SetCheckAt(index, false).ToRawDataList();
+            UpdateToibanCheckedList(helper.SetCheckTo(toiban, false));
         }
 
+        /// <summary>
+        /// 出力リストと件数ラベルを更新する。
+        /// </summary>
+        private void UpdateToibanCheckedList(ToibanCheckedListHelper checkedList)
+        {
+            _viewmodel.ToibanCheckedList = checkedList.ToRawDataList();
+            _viewmodel.CheckedToibanCount = _viewmodel.ToibanCheckedList.Count(item => item.Item1).ToString("00");
+        }
     }
 }

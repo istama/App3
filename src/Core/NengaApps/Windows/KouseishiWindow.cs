@@ -52,13 +52,13 @@ namespace IsTama.NengaBooster.Core.NengaApps
         public bool IsToibanTextBoxEnabled()
         {
             if (!IsRunning() || !Exists())
-                throw new NengaBoosterException("問番のテキストボックスを取得できません。");
+                return false;
 
             var controls = WindowStates.GetFormControlStatesArray(_config.TextBoxPoint_Toiban);
             if (controls.Length == 0)
                 throw new NengaBoosterException("問番のテキストボックスを取得できません。");
 
-            return controls[0].Enabled();
+            return controls.First().Enabled();
         }
 
         /// <summary>
@@ -67,13 +67,13 @@ namespace IsTama.NengaBooster.Core.NengaApps
         public bool IsToibanTextBoxEmpty()
         {
             if (!IsRunning() || !Exists())
-                throw new NengaBoosterException("問番のテキストボックスを取得できません。");
+                return false;
 
             var controls = WindowStates.GetFormControlStatesArray(_config.TextBoxPoint_Toiban);
             if (controls.Length == 0)
                 throw new NengaBoosterException("問番のテキストボックスを取得できません。");
 
-            var toiban = controls[0].GetText();
+            var toiban = controls.First().GetText();
 
             // 何故か空の問番テキストボックスからテキストを取得すると1234567890が返ってくる
             return String.IsNullOrEmpty(toiban) || toiban == "1234567890";

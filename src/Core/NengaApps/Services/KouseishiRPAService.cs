@@ -57,15 +57,18 @@ namespace IsTama.NengaBooster.Core.NengaApps
             var count = 0;
             while (true)
             {
-                if (kouseishiWindow.IsToibanTextBoxEmpty())
-                    return true;
-
                 // 工程違いなどからダイアログが表示されたら
                 if (dialogWindow.IsOpen(0))
+                {
                     return false;
+                }
+
+                // 問番を入力するテキストボックスが空になったら
+                if (kouseishiWindow.IsToibanTextBoxEmpty() && kouseishiWindow.IsToibanTextBoxEnabled())
+                    return true;
 
                 // 一定時間内にテキストボックスが空にならなず、ダイアログも表示されないなら
-                if (count >= 200)
+                if (count >= 700)
                     return false;
 
                 count += 1;

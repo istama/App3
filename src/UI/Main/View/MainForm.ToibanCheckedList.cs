@@ -104,7 +104,7 @@ namespace IsTama.NengaBooster.UI.Main.View
         /// </summary>
         private void BtnPrintKouseishi_Click(object sender, System.EventArgs e)
         {
-            ShowErrorIfThrowException(() =>  _controller.EnterTextBoxToibanToKouseishiAsync());
+            ShowErrorIfThrowException(() =>  _controller.EnterToibanListToKouseishiAsync());
         }
 
         /// <summary>

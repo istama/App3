@@ -43,9 +43,9 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
             return _windowPool.TryGetOrCreateWindowController(_windowTitlePattern, _maxWindowWidth, waittime_ms, out controller);
         }
         
-        public bool Exists()
+        public bool Exists(int waittime_ms)
         {
-            return TryGetController(0, out var controller) && controller.Exists();
+            return TryGetController(waittime_ms, out var controller) && controller.Exists();
         }
 
         public bool IsOpen(int waittime_ms)

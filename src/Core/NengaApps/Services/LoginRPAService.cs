@@ -40,8 +40,8 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 }
 
                 // ログインウィンドウが開くまで待機する
-                await loginWindow.ActivateAsync(3000).ConfigureAwait(false);
-                if (!loginWindow.IsOpen(3000))
+                await loginWindow.ActivateAsync(10000).ConfigureAwait(false);
+                if (!loginWindow.IsOpen(1000))
                 {
                     return false;
                 }
@@ -63,7 +63,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
                     _userAccountForm.ShowDialog(null, user);
                 }
 
-                // ログインをアクティブにする
+                // ログインウィンドウをアクティブにする
                 if (!await loginWindow.ActivateAsync(2000).ConfigureAwait(false))
                 {
                     return false;
@@ -75,11 +75,11 @@ namespace IsTama.NengaBooster.Core.NengaApps
                     return false;
                 }
 
-                //System.Windows.Forms.MessageBox.Show("enter user account info");
+                // TODO アカウントが間違っていた場合の処理を入れる
 
                 // 年賀アプリが開くまで待機する
-                await nengaAppWindow.ActivateAsync(2000).ConfigureAwait(false);
-                if (!nengaAppWindow.IsOpen(250))
+                await nengaAppWindow.ActivateAsync(10000).ConfigureAwait(false);
+                if (!nengaAppWindow.IsOpen(1000))
                 {
                     return false;
                 }

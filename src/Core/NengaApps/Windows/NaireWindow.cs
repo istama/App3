@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,11 +53,14 @@ namespace IsTama.NengaBooster.Core.NengaApps
         public bool IsToibanTextBoxEnabled()
         {
             if (!IsRunning() || !Exists())
-                throw new NengaBoosterException("問番のテキストボックスを取得できません。");
+                return false;
 
             var controls = WindowStates.GetFormControlStatesArray(_config.TextBoxPoint_Toiban);
             if (controls.Length == 0)
-                throw new NengaBoosterException("問番のテキストボックスを取得できません。");
+            {
+                var emsg = GetPointTextForErrorMessage(_config.TextBoxPoint_Toiban);
+                throw new NengaBoosterException($"問番のテキストボックス（{emsg}）を取得できません。");
+            }
 
             return controls[0].Enabled();
         }
@@ -67,16 +71,24 @@ namespace IsTama.NengaBooster.Core.NengaApps
         public bool IsToibanTextBoxEmpty()
         {
             if (!IsRunning() || !Exists())
-                throw new NengaBoosterException("問番のテキストボックスを取得できません。");
+                return false;
 
             var controls = WindowStates.GetFormControlStatesArray(_config.TextBoxPoint_Toiban);
             if (controls.Length == 0)
-                throw new NengaBoosterException("問番のテキストボックスを取得できません。");
+            {
+                var emsg = GetPointTextForErrorMessage(_config.TextBoxPoint_Toiban);
+                throw new NengaBoosterException($"問番のテキストボックス（{emsg}）を取得できません。");
+            }
 
             var toiban = controls[0].GetText();
 
             // 何故か空の問番テキストボックスからテキストを取得すると1234567890が返ってくる
             return String.IsNullOrEmpty(toiban) || toiban == "1234567890";
+        }
+
+        private string GetPointTextForErrorMessage(Point point)
+        {
+            return $"x: {point.X}, y: {point.Y}";
         }
 
         /// <summary>

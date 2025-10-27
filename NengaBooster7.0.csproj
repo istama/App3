@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -51,6 +51,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>IsTama.NengaBooster.AppMain.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ngb.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -158,6 +161,7 @@
     <Compile Include="src\UI\Main\Presentations\MainFormController.cs" />
     <Compile Include="src\UI\Main\Presentations\MainFormController.Menu.cs" />
     <Compile Include="src\UI\Main\Presentations\MainFormController.MenuStrip.cs" />
+    <Compile Include="src\UI\Main\Presentations\MainFormController.ToibanCheckedList.cs" />
     <Compile Include="src\UI\Main\Presentations\MainFormPresenter.cs" />
     <Compile Include="src\UI\Main\Presentations\MainFormViewModel.cs" />
     <Compile Include="src\UI\Main\Presentations\MainFormViewModel.MenuStrip.cs" />
@@ -292,6 +296,7 @@
     <Compile Include="src\Utils\JsonWriter.cs" />
     <Compile Include="src\Utils\KeysExtensions.cs" />
     <Compile Include="src\Utils\MyException.cs" />
+    <Compile Include="src\Utils\MyResource.cs" />
     <Compile Include="src\Utils\StringExtensions.cs" />
     <Compile Include="src\Utils\Threading\ApplicationMutex.cs" />
     <Compile Include="src\Utils\Threading\UIThreadMethodInvoker.cs" />

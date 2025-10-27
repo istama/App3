@@ -73,7 +73,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
         /// <summary>
         /// 手組を開く。
         /// </summary>
-        public async Task<bool> OpenTegumiWindowAsync(HensyuWindow hensyuWindow)
+        public async Task<bool> OpenTegumiWindowAsync(HensyuWindow hensyuWindow, DialogWindow dialogWindow)
         {
             if (!hensyuWindow.IsRunning())
                 hensyuWindow.ThrowNengaBoosterExceptionBecauseApplicationNotRun();
@@ -83,7 +83,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 return false;
 
             // ダイアログが表示されてないるなら実行しない
-            if (hensyuWindow.IsOpen(0))
+            if (dialogWindow.IsOpen(0))
                 return false;
 
             // 手組を開く

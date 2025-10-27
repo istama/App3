@@ -106,6 +106,11 @@ namespace IsTama.NengaBooster.UI.Gateways
             var dto = await ReadNengaBoosterDtoAsync().ConfigureAwait(false);
             _infoDetailApplicationConfigBuffer = _dtoAndConfigMapper.ConvertToInformationDetailApplicationConfigFrom(dto);
 
+            // インフォメーションのプロセス名とアプリケーション名をインフォメーション詳細の設定に使用する
+            var infoConfig = await GetInformationAppilicationConfigAsync().ConfigureAwait(false);
+            _infoDetailApplicationConfigBuffer.Basic.ProcessName = infoConfig.Basic.ProcessName;
+            _infoDetailApplicationConfigBuffer.Basic.ApplicationName_OnNengaMenu = infoConfig.Basic.ApplicationName_OnNengaMenu;
+
             return _infoDetailApplicationConfigBuffer;
         }
 

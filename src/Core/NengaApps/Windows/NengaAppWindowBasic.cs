@@ -68,7 +68,12 @@ namespace IsTama.NengaBooster.Core.NengaApps
         /// </summary>
         public bool Exists()
         {
-            return WindowStates.Exists();
+            return Exists(0);
+        }
+
+        public bool Exists(int waittime_ms)
+        {
+            return WindowStates.Exists(waittime_ms);
         }
 
         /// <summary>
@@ -98,7 +103,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 return false;
             }
 
-            if (!Exists())
+            if (!Exists(waittime_ms))
             {
                 //System.Windows.Forms.MessageBox.Show("window not exists");
                 return false;

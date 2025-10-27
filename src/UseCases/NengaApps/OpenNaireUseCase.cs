@@ -56,11 +56,15 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             // 注文名入れアプリとの連携設定を取得
             var applicationConfig = await _applicationConfigRepository.GetNaireAppilicationConfigAsync().ConfigureAwait(false);
             // 注文名入れウィンドウを取得
-            var window = _nengaAppWindowFactory.GetOrCreateNaireWindow(applicationConfig);
+            var naireWindow = _nengaAppWindowFactory.GetOrCreateNaireWindow(applicationConfig);
 
-            // ログインして注文名入れアプリを起動する
-            if (!await _loginService.ExecuteAsync(applicationConfig.Basic, window).ConfigureAwait(false))
-                return;
+            // 注文名入れウィンドウが開いていないなら
+            if (!naireWindow.IsOpen(0))
+            {
+                // ログインして注文名入れアプリを起動する
+                if (!await _loginService.ExecuteAsync(applicationConfig.Basic, naireWindow).ConfigureAwait(false))
+                    return;
+            }
 
             // 注文名入れアプリのダイアログを取得
             var dialogConfig = await _applicationConfigRepository.GetNaireDialogConfigAsync().ConfigureAwait(false);
@@ -69,14 +73,16 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             // 注文名入れの動作設定を取得
             var behaviorConfig = await _behaviorConfigRepository.GetNaireBehaviorConfigAsync().ConfigureAwait(false);
             // 注文名入れに問番を入力
-            if (!await _naireRPAService.EnterToibanAsync(window, toiban, dialog, behaviorConfig).ConfigureAwait(false))
+            if (!await _naireRPAService.EnterToibanAsync(naireWindow, toiban, dialog, behaviorConfig).ConfigureAwait(false))
+            {
                 return;
+            }
 
             // 再組版モードなら組版依頼を行う
             var openMode = await _userConfigRepository.GetNaireOpenModeAsync().ConfigureAwait(false);
             if (openMode == NaireOpenMode.Saikumi)
             {
-                if (await _naireRPAService.ExecuteKumihanIraiAsync(window, dialog, behaviorConfig).ConfigureAwait(false))
+                if (await _naireRPAService.ExecuteKumihanIraiAsync(naireWindow, dialog, behaviorConfig).ConfigureAwait(false))
                 {
                     // TODO NengaBoosterをアクティブにする
                 }

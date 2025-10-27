@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,32 +15,35 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
     /// </summary>
     sealed class WindowPool
     {
-        private readonly Dictionary<TitleAndWidth, WindowController> _controllerBuffer = new Dictionary<TitleAndWidth, WindowController>();
+        private readonly ConcurrentDictionary<TitleAndWidth, WindowController> _controllerBuffer = new ConcurrentDictionary<TitleAndWidth, WindowController>();
 
 
         public WindowPool()
         {
         }
 
-        public bool TryGetOrCreateWindowController(string windowTitlePattern, int maxWindowWidth, int waittime_ms, out WindowController _controller)
+
+        public bool TryGetOrCreateWindowController(string windowTitlePattern, int maxWindowWidth, int waittime_ms, out WindowController controller)
         {
             Assert.IsNullOrWhiteSpace(windowTitlePattern, nameof(windowTitlePattern));
             Assert.IsSmallerThan(maxWindowWidth, 1, nameof(maxWindowWidth));
 
-            _controller = null;
+            controller = null;
 
             var key = new TitleAndWidth(windowTitlePattern, maxWindowWidth);
 
-            var contains = _controllerBuffer.ContainsKey(key);
-            if (contains)
+            // バッファに同じ条件のWindowControllerが保存されており、今でも存在するウィンドウなら
+            if (_controllerBuffer.ContainsKey(key))
             {
-                var controller = _controllerBuffer[key];
-                if (controller.Exists())
+                var buffer = _controllerBuffer[key];
+                if (buffer.Exists())
                 {
-                    _controller = controller;
+                    controller = buffer;
                     return true;
                 }
             }
+
+            // バッファに同じ条件のウィンドウが存在しないなら新たに探す
 
             var controllers = WindowController
                 .FindAll(key.Title, waittime_ms)
@@ -52,12 +56,9 @@ namespace IsTama.NengaBooster.Infrastructures.RPA
             }
 
             var newController = controllers.OrderByDescending(c => c.GetSize().Width).First();
-            if (contains)
-                _controllerBuffer[key] = newController;
-            else
-                _controllerBuffer.Add(key, newController);
+            // 値の追加または更新をスレッドセーフに行う
+            controller = _controllerBuffer.AddOrUpdate(key, (_) => newController, (_, __) => newController);
 
-            _controller = newController;
             return true;
         }
 

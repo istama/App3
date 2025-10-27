@@ -41,17 +41,24 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
 
         public async Task<bool> ExecuteAsync(ApplicationBasicConfig basicConfig, NengaAppWindowBasic nengaAppWindow)
         {
+            // 年賀メニューとの連携設定を取得
             var nengaMenuConfig = await _applicationConfigRepository.GetNengaMenuConfigAsync().ConfigureAwait(false);
+            // 年賀メニューウィンドウを取得
             var nengaMenuWindow = _nengaAppWindowFactory.GetOrCreateNengaMenuWindow(nengaMenuConfig);
 
+            // ログインウィンドウとの連携設定を取得
             var loginConfig = await _applicationConfigRepository.GetLoginFormConfigAsync().ConfigureAwait(false);
+            // 起動する年賀アプリの設定をログインの設定にセットする
             loginConfig.Basic.ApplicationName_OnNengaMenu = basicConfig.ApplicationName_OnNengaMenu;
             loginConfig.Basic.ProcessName = basicConfig.ProcessName;
 
+            // ログインウィンドウを取得
             var loginWindow = _nengaAppWindowFactory.GetOrCreateLoginFormWindow(loginConfig);
 
+            // ユーザーアカウント情報を取得
             var userAccount = await _userConfigRepository.GetUserAccountAsync().ConfigureAwait(false);
 
+            // ログインを試みる
             return await _loginRPAService.LoginAsync(nengaMenuWindow, loginWindow, nengaAppWindow, userAccount).ConfigureAwait(false);
         }
     }

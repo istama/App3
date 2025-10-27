@@ -25,23 +25,27 @@ namespace IsTama.NengaBooster.Core.NengaApps
             if (!infoWindow.IsRunning())
                 infoWindow.ThrowNengaBoosterExceptionBecauseApplicationNotRun();
 
-            if (infoWindow.IsOpen(0))
+            // 詳細ウィンドウが開かれているなら閉じる
+            if (detailWindow.IsOpen(0))
+            {
+                await detailWindow.CloseAsync().ConfigureAwait(false);
+                // インフォメーションが表示されないなら
+                if (!infoWindow.IsOpen(2500))
+                    return false;
+            }
+
+            // インフォメーションが表示されていない場合
+            if (!infoWindow.IsOpen(0))
             {
                 return false;
             }
 
             // ダイアログが表示されてないるなら問番は入力しない
-            if (dialog.IsOpen(0))
+            if (dialog.IsOpen(50))
             {
                 await infoWindow.ActivateAsync(0);
                 await dialog.ActivateAsync(0);
                 return false;
-            }
-
-            // 詳細ウィンドウが開かれているなら閉じる
-            if (detailWindow.IsOpen(0))
-            {
-                await detailWindow.CloseAsync().ConfigureAwait(false);
             }
 
             // 問番を入力して開始ボタンを押す
@@ -59,7 +63,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
         /// </summary>
         public async Task<bool> OpenDetailWindowAsync(InformationWindow infoWindow, InformationDetailWindow detailWindow)
         {
-            if (detailWindow.IsOpen(1000))
+            if (detailWindow.IsOpen(0))
                 return true;
 
             if (!await infoWindow.OpenInformationDetailWindowAsync().ConfigureAwait(false))
@@ -74,9 +78,16 @@ namespace IsTama.NengaBooster.Core.NengaApps
         public async Task<bool> OpenKouseiPageAsync(InformationWindow infoWindow, InformationDetailWindow detailWindow)
         {
             if (!await OpenDetailWindowAsync(infoWindow, detailWindow).ConfigureAwait(false))
+            {
                 return false;
+            }
 
-            return await detailWindow.OpenKouseiPageAsync(1000).ConfigureAwait(false);
+            if (!await detailWindow.ActivateAsync(10000).ConfigureAwait(false))
+            {
+                return false;
+            }
+
+            return await detailWindow.OpenKouseiPageAsync(0).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -85,9 +96,16 @@ namespace IsTama.NengaBooster.Core.NengaApps
         public async Task<bool> OpenKumihanPageAsync(InformationWindow infoWindow, InformationDetailWindow detailWindow)
         {
             if (!await OpenDetailWindowAsync(infoWindow, detailWindow).ConfigureAwait(false))
+            {
                 return false;
+            }
 
-            return await detailWindow.OpenKumihanPageAsync(1000).ConfigureAwait(false);
+            if (!await detailWindow.ActivateAsync(10000).ConfigureAwait(false))
+            {
+                return false;
+            }
+
+            return await detailWindow.OpenKumihanPageAsync(0).ConfigureAwait(false);
         }
 
         /// <summary>

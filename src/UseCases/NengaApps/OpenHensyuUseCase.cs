@@ -52,26 +52,39 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
 
         public async Task ExecuteAsync(Toiban toiban)
         {
+            // 編集アプリとの連携設定を取得
             var applicationConfig = await _applicationConfigRepository.GetHensyuAppilicationConfigAsync().ConfigureAwait(false);
-            var window = _nengaAppWindowFactory.GetOrCreateHensyuWindow(applicationConfig);
+            // 編集ウィンドウを取得
+            var hensyuWindow = _nengaAppWindowFactory.GetOrCreateHensyuWindow(applicationConfig);
 
-            if (!await _loginService.ExecuteAsync(applicationConfig.Basic, window).ConfigureAwait(false))
-                return;
+            // 編集ウィンドウが開かれていないなら
+            if (!hensyuWindow.IsOpen(0))
+            {
+                // ログインして編集アプリを起動する
+                if (!await _loginService.ExecuteAsync(applicationConfig.Basic, hensyuWindow).ConfigureAwait(false))
+                    return;
+            }
 
+            // ダイアログウィンドウを取得
             var dialogConfig = await _applicationConfigRepository.GetHensyuDialogConfigAsync().ConfigureAwait(false);
             var dialog = _nengaAppWindowFactory.GetOrCreateHensyuDialogWindow(dialogConfig);
 
+            // 編集アプリの動作設定を取得
             var behaviorConfig = await _behaviorConfigRepository.GetHensyuBehaviorConfigAsync().ConfigureAwait(false);
 
-            if (!await _hensyuRPAService.EnterToibanAsync(window, toiban, dialog, behaviorConfig).ConfigureAwait(false))
+            // 編集アプリに問番を入力する
+            if (!await _hensyuRPAService.EnterToibanAsync(hensyuWindow, toiban, dialog, behaviorConfig).ConfigureAwait(false))
                 return;
 
+            // 動作モードが「手組編集画面まで開く」の場合
             var openMode = await _userConfigRepository.GetHensyuOpenModeAsync().ConfigureAwait(false);
             if (openMode == HensyuOpenMode.TegumiWindow)
             {
-                await _hensyuRPAService.OpenTegumiWindowAsync(window).ConfigureAwait(false);
+                // 手組編集画面を開く
+                await _hensyuRPAService.OpenTegumiWindowAsync(hensyuWindow, dialog).ConfigureAwait(false);
             }
 
+            // 問番を出力リストに追加する
             _presenter.AddToibanToCheckedList(toiban);
         }
     }

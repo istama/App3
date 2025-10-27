@@ -12,7 +12,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
     /// </summary>
     interface INativeWindowStates
     {
-        bool Exists();
+        bool Exists(int waittime_ms);
         bool IsOpen(int waittime_ms);
         bool IsActivated(int waittime_ms);
 

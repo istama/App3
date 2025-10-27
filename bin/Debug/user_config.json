@@ -10,7 +10,7 @@
   "OpenInformationDetailWindowChecked": false,
   "OpenInformationKouseiPageChecked": false,
   "OpenInformationKumihanPageChecked": false,
-  "ShouldAddToibanToCheckedListWhenInformationOpenChecked": true,
+  "ShouldAddToibanToCheckedListWhenInformationOpenChecked": false,
   "ShouldUncheckToibanFromCheckedListChecked": false,
   "RemoveToibanAllChecked": true,
   "RemoveToibanCheckedChecked": false,
