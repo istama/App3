@@ -16,7 +16,7 @@ namespace IsTama.NengaBooster.UI.Gateways
         public int WaitTime_Naire_DialogOpenOnSaikumi { get; set; } = 0;
         public int WaitTime_Naire_SaikumiAlertDialogOpen { get; set; } = 0;
         public int WaitTime_Hensyu_DialogOpen { get; set; } = 0;
-        public int WaitTime_Kouseishi_NextToibanSend { get; set; } = 0;
+        //public int WaitTime_Kouseishi_NextToibanSend { get; set; } = 0;
 
         public string ProcessName_NengaMenu { get; set; } = string.Empty;  
         public string ProcessName_Naire { get; set; } = string.Empty;

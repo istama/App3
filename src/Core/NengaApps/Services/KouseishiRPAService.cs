@@ -76,50 +76,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 await Task.Delay(10).ConfigureAwait(false);
             }
         }
-
-        /// <summary>
-        /// 問番を入力する。
-        /// </summary>
-        public async Task<bool> EnterToibanAsync(KouseishiWindow kouseishiWindow, IEnumerable<Toiban> toibans, DialogWindow dialogWindow, KouseishiBehaviorConfig config)
-        {
-            if (!kouseishiWindow.IsRunning())
-                kouseishiWindow.ThrowNengaBoosterExceptionBecauseApplicationNotRun();
-
-            // ウィンドウが開かれていないなら入力しない
-            if (!kouseishiWindow.IsOpen(0))
-            {
-                return false;
-            }
-
-            foreach (var toiban in toibans)
-            {
-                // ダイアログが表示されてないるなら問番は入力しない
-                if (dialogWindow.IsOpen(0))
-                {
-                    await kouseishiWindow.ActivateAsync(0);
-                    await dialogWindow.ActivateAsync(0);
-                    return false;
-                }
-
-                // 問番のテキストボックスが無効なら入力しない
-                if (!kouseishiWindow.IsToibanTextBoxEnabled())
-                {
-                    await kouseishiWindow.ActivateAsync(0);
-                    return false;
-                }
-
-                // 問番を入力してデータを開く
-                if (await kouseishiWindow.EnterToibanAsync(toiban).ConfigureAwait(false))
-                {
-                    return false;
-                }
-
-                // 指定時間待機する
-                await kouseishiWindow.WaitAsync(config.WaitTime_NextToibanSend).ConfigureAwait(false);
-            }
-
-            return true;
-        }
+        
 
         /// <summary>
         /// ウィンドウを閉じる。

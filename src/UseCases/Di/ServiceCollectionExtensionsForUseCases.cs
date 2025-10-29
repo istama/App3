@@ -21,6 +21,11 @@ namespace IsTama.NengaBooster.UseCases.Di
         private static void AddNengaApps(this IServiceCollection services)
         {
             services.AddSingleton<LoginService>();
+            services.AddSingleton(provider =>
+            {
+                return ActivatorUtilities.CreateInstance<ActiveNengaBoosterFormService>(provider, "^NengaBooster$");
+            });
+
             services.AddSingleton<IOpenNaireUseCase, OpenNaireUseCase>();
             services.AddSingleton<IOpenHensyuUseCase, OpenHensyuUseCase>();
             services.AddSingleton<IOpenInformationUseCase, OpenInformationUseCase>();

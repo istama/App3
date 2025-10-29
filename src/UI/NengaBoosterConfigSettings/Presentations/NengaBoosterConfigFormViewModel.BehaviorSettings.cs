@@ -27,10 +27,10 @@ namespace IsTama.NengaBooster.UI.NengaBoosterConfigSettings.Presentations
         [Category("1. 待ち時間")]
         [LargerThanOrEqual(0)]
         public int WaitTime_Hensyu_DialogOpen { get; set; }
-        [Description("問番リストを一件ずつ校正紙ダイレクト出力に送るときの待ち時間 ミリ秒単位で指定する")]
-        [Category("1. 待ち時間")]
-        [LargerThanOrEqual(0)]
-        public int WaitTime_Kouseishi_NextToibanSend { get; set; }
+        //[Description("問番リストを一件ずつ校正紙ダイレクト出力に送るときの待ち時間 ミリ秒単位で指定する")]
+        //[Category("1. 待ち時間")]
+        //[LargerThanOrEqual(0)]
+        //public int WaitTime_Kouseishi_NextToibanSend { get; set; }
 
         [Description("工程を示すダイアログが表示されたとき、自動でそのダイアログを閉じてもよい工程を指定する")]
         [Category("2. 動作")]

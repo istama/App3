@@ -17,6 +17,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
 
         private readonly LoginService _loginService;
         private readonly NaireRPAService _naireRPAService;
+        private readonly ActiveNengaBoosterFormService _activeNengaBoosterFormService;
         private readonly NengaAppWindowFactory _nengaAppWindowFactory;
 
         private readonly IApplicationConfigRepository _applicationConfigRepository;
@@ -28,6 +29,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             IMainFormPresenter presenter,
             LoginService loginService,
             NaireRPAService naireRPAService,
+            ActiveNengaBoosterFormService activeNengaBoosterFormService,
             NengaAppWindowFactory nengaAppWindowFactory,
             IApplicationConfigRepository applicationConfigRepository,
             IBehaviorConfigRepository behaviorConfigRepository,
@@ -36,6 +38,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             Assert.IsNull(presenter, nameof(presenter));
             Assert.IsNull(loginService, nameof(loginService));
             Assert.IsNull(naireRPAService, nameof(naireRPAService));
+            Assert.IsNull(activeNengaBoosterFormService, nameof(activeNengaBoosterFormService));
             Assert.IsNull(nengaAppWindowFactory, nameof(nengaAppWindowFactory));
             Assert.IsNull(applicationConfigRepository, nameof(applicationConfigRepository));
             Assert.IsNull(behaviorConfigRepository, nameof(behaviorConfigRepository));
@@ -44,6 +47,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             _presenter = presenter;
             _loginService = loginService;
             _naireRPAService = naireRPAService;
+            _activeNengaBoosterFormService = activeNengaBoosterFormService;
             _nengaAppWindowFactory = nengaAppWindowFactory;
             _applicationConfigRepository = applicationConfigRepository;
             _behaviorConfigRepository = behaviorConfigRepository;
@@ -85,6 +89,8 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
                 if (await _naireRPAService.ExecuteKumihanIraiAsync(naireWindow, dialog, behaviorConfig).ConfigureAwait(false))
                 {
                     // TODO NengaBoosterをアクティブにする
+                    //System.Windows.Forms.MessageBox.Show("active nenga booster");
+                    await _activeNengaBoosterFormService.ExecuteAsync().ConfigureAwait(false);
                 }
             }
 

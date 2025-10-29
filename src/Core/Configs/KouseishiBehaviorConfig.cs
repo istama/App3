@@ -8,6 +8,6 @@ namespace IsTama.NengaBooster.Core.Configs
 {
     class KouseishiBehaviorConfig
     {
-        public int WaitTime_NextToibanSend { get; set; }
+        //public int WaitTime_NextToibanSend { get; set; }
     }
 }

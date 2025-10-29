@@ -1,0 +1,6 @@
+
+ctrl t5 => active ^NengaBooster$
+
+window_title: ^NengaBooster$
+
+f2 => move ^•ÒW$

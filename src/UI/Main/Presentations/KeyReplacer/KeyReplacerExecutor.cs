@@ -27,7 +27,11 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
 
         public async Task ExecuteKeyReplacerAsync(string keyReplacerSettingFilepath)
         {
+            if (_keyReplacerProcess != null && !_keyReplacerProcess.HasExited)
+                return;
+
             var keyReplacerExeFilepath = await _repository.GetKeyReplacerExeFilepathAsync();
+            keyReplacerExeFilepath = Path.GetFullPath(keyReplacerExeFilepath);
 
             // 実行ファイルが存在しない
             if (!File.Exists(keyReplacerExeFilepath))
@@ -36,6 +40,7 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
             }
 
             var workingDirectory = Path.GetDirectoryName(keyReplacerExeFilepath);
+            workingDirectory = Path.GetFullPath(workingDirectory);
 
             // 起動するプログラムの情報
             var processStartInfo = new ProcessStartInfo
@@ -61,10 +66,11 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
             };
 
             // すでにKeyReplacerが起動している場合
-            //if (!keyReplacerProcess.HasExited)
-            //{
-            //    return;
-            //}
+            if (_keyReplacerProcess != null && !_keyReplacerProcess.HasExited)
+            {
+                System.Windows.Forms.MessageBox.Show("KeyReplacer.exeは既に起動しています。");
+                return;
+            }
 
             _keyReplacerProcess = keyReplacerProcess;
             
@@ -81,10 +87,12 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
 
         public void KillKeyReplacer()
         {
-            if (_keyReplacerProcess == null)
+            if (_keyReplacerProcess == null || _keyReplacerProcess.HasExited)
                 return;
 
             _keyReplacerProcess.Kill();
+            // Kill()が非同期に処理を行うので、プロセスが終了するまで待機する
+            _keyReplacerProcess.WaitForExit(10000);
         }
     }
 }

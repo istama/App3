@@ -1,0 +1,19 @@
+﻿{
+  "UserName": "",
+  "Password": "",
+  "KeyReplaceSettingsFilePath": ".\\key_replacer_settings.txt",
+  "SelectToibanByClickChecked": true,
+  "SelectToibanByWClickChecked": false,
+  "OpenHensyuMenuOnlyChecked": false,
+  "OpenHensyuTegumiWindowChecked": true,
+  "OpenInformationSearchFormOnlyChecked": true,
+  "OpenInformationDetailWindowChecked": false,
+  "OpenInformationKouseiPageChecked": false,
+  "OpenInformationKumihanPageChecked": false,
+  "ShouldAddToibanToCheckedListWhenInformationOpenChecked": false,
+  "ShouldUncheckToibanFromCheckedListChecked": false,
+  "RemoveToibanAllChecked": true,
+  "RemoveToibanCheckedChecked": false,
+  "RemoveToibanUncheckedChecked": false,
+  "CheckedToibanListCharSize": 9
+}

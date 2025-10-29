@@ -41,7 +41,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
 
                 // ログインウィンドウが開くまで待機する
                 await loginWindow.ActivateAsync(10000).ConfigureAwait(false);
-                if (!loginWindow.IsOpen(1000))
+                if (!loginWindow.IsOpen(3000))
                 {
                     return false;
                 }

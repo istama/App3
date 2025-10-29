@@ -67,6 +67,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 if (dialogWindow.Contains(config.Texts_Dialog_WorkProcessNames))
                 {
                     await dialogWindow.OkAsync().ConfigureAwait(false);
+                    await Task.Delay(50).ConfigureAwait(false);
                 }
             }
 

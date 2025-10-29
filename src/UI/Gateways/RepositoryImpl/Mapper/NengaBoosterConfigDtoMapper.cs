@@ -195,7 +195,7 @@ namespace IsTama.NengaBooster.UI.Gateways
         {
             return new KouseishiBehaviorConfig
             {
-                WaitTime_NextToibanSend = dto.WaitTime_Kouseishi_NextToibanSend
+                //WaitTime_NextToibanSend = dto.WaitTime_Kouseishi_NextToibanSend
             };
         }
 
