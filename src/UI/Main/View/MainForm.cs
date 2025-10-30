@@ -28,7 +28,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             InitializeComponent();
 
             // タスクバーに表示されるアイコンを読み込んで設定する
-            this.Icon = MyResource.GetIcon("ngb.ico");
+            //this.Icon = MyResource.GetIcon("ngb.ico");
 
             _viewmodel = viewmodel;
             _controller = controller;

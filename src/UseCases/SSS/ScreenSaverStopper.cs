@@ -40,7 +40,7 @@ namespace IsTama.NengaBooster.UseCases.SSS
                     if (token.IsCancellationRequested)
                         break;
 
-                    await Task.Delay(1000 * 59).ConfigureAwait(false);
+                    await Task.Delay(1000 * 50).ConfigureAwait(false);
 
                     var inTime = periods.IsWithinTimeRage(DateTime.Now);
                     if (inTime)

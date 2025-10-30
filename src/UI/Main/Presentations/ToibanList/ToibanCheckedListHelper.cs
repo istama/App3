@@ -45,18 +45,45 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         /// 引数の問番がリストに存在しなければリストに追加する。
         /// </summary>
         public ToibanCheckedListHelper AppendIfNothing(Toiban toiban)
-            => AppendIfNothing(toiban, true);
-        public ToibanCheckedListHelper AppendIfNothing(Toiban toiban, bool check)
-            => AppendIfNothing(new ToibanCheckedListItem(toiban, check));
-        public ToibanCheckedListHelper AppendIfNothing(ToibanCheckedListItem item)
         {
-            if (item.Toiban == Toiban.Empty)
+            if (toiban == Toiban.Empty)
                 return this;
 
-            if (_toibanList.Any(v => v.Toiban == item.Toiban))
+            if (_toibanList.Any(item => item.Toiban == toiban))
                 return this;
 
-            return new ToibanCheckedListHelper(_toibanList.Append(item).ToList());
+            var newItem = new ToibanCheckedListItem(true, toiban);
+
+            return new ToibanCheckedListHelper(_toibanList.Append(newItem));
+        }
+
+        /// <summary>
+        /// 引数の問番がリストに存在しなければリストに追加する。
+        /// 存在するならチェック状態のみ引数の値に変更する。
+        /// </summary>
+        public ToibanCheckedListHelper AppendOrUpdate(Toiban toiban, bool check)
+        {
+            if (toiban == Toiban.Empty)
+                return this;
+
+            if (_toibanList.Any(v => v.Toiban == toiban))
+            {
+                var newList = _toibanList.Select(item =>
+                {
+                    if (item.Toiban == toiban)
+                        return new ToibanCheckedListItem(check, toiban);
+                    else
+                        return item;
+                });
+
+                return new ToibanCheckedListHelper(newList);
+            }
+            else
+            {
+                var newItem = new ToibanCheckedListItem(toiban, check);
+
+                return new ToibanCheckedListHelper(_toibanList.Append(newItem));
+            }
         }
 
         /// <summary>

@@ -12,8 +12,15 @@ namespace IsTama.NengaBooster.UseCases.Presenters
     {
         /// <summary>
         /// 問番を出力リストに追加する。
+        /// すでに問番がある場合は何もしない。
         /// </summary>
         void AddToibanToCheckedList(Toiban toiban);
+
+        /// <summary>
+        /// 問番を出力リストに指定したチェック状態で追加する。
+        /// すでに問番がある場合は、チェックのみ指定した状態にする。
+        /// </summary>
+        void AddToibanToCheckedList(Toiban toiban, bool check);
 
         /// <summary>
         /// 出力リストから指定の問番のチェックを外す。

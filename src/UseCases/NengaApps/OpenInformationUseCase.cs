@@ -56,16 +56,16 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             var detailWindow = _nengaAppWindowFactory.GetOrCreateInformationDetailWindow(detailAppConfig);
 
             // 詳細ウィンドウがすでに開かれているなら閉じる
-            if (detailWindow.IsOpen(0))
-            {
-                await detailWindow.CloseAsync().ConfigureAwait(false);
-            }
+            //if (detailWindow.IsOpen(0))
+            //{
+            //    await detailWindow.CloseAsync().ConfigureAwait(false);
+            //}
 
             var infoAppConfig = await _applicationConfigRepository.GetInformationAppilicationConfigAsync().ConfigureAwait(false);
             var infoWindow = _nengaAppWindowFactory.GetOrCreateInformationWindow(infoAppConfig);
 
             // 検索ウィンドウが開かれていないならログインする
-            if (!infoWindow.IsOpen(0))
+            if (!infoWindow.IsOpen(0) && !detailWindow.IsOpen(0))
             {
                 if (!await _loginService.ExecuteAsync(infoAppConfig.Basic, infoWindow).ConfigureAwait(false))
                     return;

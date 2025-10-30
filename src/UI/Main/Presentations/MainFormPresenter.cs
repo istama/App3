@@ -29,6 +29,12 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
             UpdateToibanCheckedList(helper.AppendIfNothing(_viewmodel.Toiban));
         }
 
+        public void AddToibanToCheckedList(Toiban toiban, bool check)
+        {
+            var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
+            UpdateToibanCheckedList(helper.AppendOrUpdate(_viewmodel.Toiban, check));
+        }
+
         public void UncheckToibanFromCheckedListAt(Toiban toiban)
         {
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);

@@ -85,7 +85,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             }
 
             // 問番を出力リストに追加する
-            _presenter.AddToibanToCheckedList(toiban);
+            _presenter.AddToibanToCheckedList(toiban, true);
         }
     }
 }

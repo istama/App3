@@ -56,6 +56,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
 
             return await WindowOperator
                 .Activate()
+                .Focus(_config.ButtonName_Tegumi)
                 .SendEnterTo(_config.ButtonName_Tegumi)
                 .ThrowIfFailed()
                 .DoAsync()

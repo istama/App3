@@ -88,14 +88,13 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             {
                 if (await _naireRPAService.ExecuteKumihanIraiAsync(naireWindow, dialog, behaviorConfig).ConfigureAwait(false))
                 {
-                    // TODO NengaBoosterをアクティブにする
-                    //System.Windows.Forms.MessageBox.Show("active nenga booster");
+                    // NengaBoosterをアクティブにする
                     await _activeNengaBoosterFormService.ExecuteAsync().ConfigureAwait(false);
                 }
             }
 
             // 問番を出力リストに追加する
-            _presenter.AddToibanToCheckedList(toiban);
+            _presenter.AddToibanToCheckedList(toiban, true);
         }
 
 

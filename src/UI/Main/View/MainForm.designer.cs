@@ -59,6 +59,7 @@ namespace IsTama.NengaBooster.UI.Main.View
         public void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.TxtBoxToiban = new System.Windows.Forms.TextBox();
             this.ContextMenuStrip_Toiban = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItem_ToibanSelectMode_ByClick = new System.Windows.Forms.ToolStripMenuItem();
@@ -965,6 +966,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.Controls.Add(this.Btn1);
             this.Controls.Add(this.TxtBoxToiban);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuBar;
             this.MaximizeBox = false;
             this.Name = "MainForm";

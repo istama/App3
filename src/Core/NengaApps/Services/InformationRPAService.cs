@@ -54,8 +54,13 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 return false;
             }
 
-            // 件数0件のダイアログが表示されないならtrueを返す
-            return !dialog.IsOpen(50);
+            // 件数0件のダイアログが表示されたなら
+            if (dialog.IsOpen(50))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>

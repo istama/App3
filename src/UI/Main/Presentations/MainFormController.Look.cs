@@ -29,7 +29,8 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
 
             // 出力リストの文字サイズを変更する。
             var size = await repos.GetToibanCheckedListCharSize();
-            // TODO この設定をすると、フォームを最小化して元に戻したときに出力リストの表示がバグる
+            // この設定をすると、フォームを最小化して元に戻したときに出力リストの表示がバグる
+            // ※フォームとコントロールのサイズを調整することで概ね解決済み
             _viewmodel.ToibanCheckedListCharSize = size;
         }
 
