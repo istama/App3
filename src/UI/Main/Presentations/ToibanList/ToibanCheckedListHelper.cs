@@ -42,6 +42,20 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
 
 
         /// <summary>
+        /// 指定した問番のインデックスを返す。
+        /// 指定した問番がリストに含まれていない場合は-1を返す。
+        /// </summary>
+        public int IndexOf(Toiban toiban)
+        {
+            return _toibanList
+                .Select((item, index) => new { Toiban_ = item.Toiban, Index = index })
+                .Where(item => item.Toiban_ == toiban)
+                .Select(item => item.Index)
+                .DefaultIfEmpty(-1)
+                .First();
+        }
+
+        /// <summary>
         /// 引数の問番がリストに存在しなければリストに追加する。
         /// </summary>
         public ToibanCheckedListHelper AppendIfNothing(Toiban toiban)

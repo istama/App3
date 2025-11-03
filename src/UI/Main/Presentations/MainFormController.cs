@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using IsTama.NengaBooster.UI.Gateways;
 using IsTama.Utils;
 
 namespace IsTama.NengaBooster.UI.Main.Presentations
@@ -101,7 +100,8 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         public void AddToibanToCheckedList()
         {
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            UpdateToibanCheckedList(helper.AppendIfNothing(_viewmodel.Toiban));
+            var toiban = _viewmodel.Toiban;
+            UpdateToibanCheckedList(helper.AppendIfNothing(toiban), toiban);
         }
 
 

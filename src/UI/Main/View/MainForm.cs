@@ -186,6 +186,20 @@ namespace IsTama.NengaBooster.UI.Main.View
                     this.ResumeLayout();
                 }
             }
+
+            // 出力リストのアイテムの選択されているインデックスが設定された場合
+            if (e.PropertyName == nameof(_viewmodel.ToibanCheckedListSelectedIndex))
+            {
+                var newIndex = _viewmodel.ToibanCheckedListSelectedIndex;
+
+                if (newIndex != -1 && newIndex != ChkListToiban.SelectedIndex)
+                {
+                    //MessageBox.Show("changed");
+                    ChkListToiban.SelectedIndex = _viewmodel.ToibanCheckedListSelectedIndex;
+                }
+
+                return;
+            }
         }
 
         /// <summary>

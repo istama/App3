@@ -40,6 +40,12 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
             set => base.SetProperty<List<(Boolean, String)>>(value);
         }
 
+        public int ToibanCheckedListSelectedIndex
+        {
+            get => base.GetProperty<int>();
+            set => base.SetProperty<int>(value, true);
+        }
+
         public int ToibanCheckedListCharSize
         {
             get => base.GetProperty<int>();

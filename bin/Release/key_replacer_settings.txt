@@ -4,3 +4,8 @@ ctrl t5 => active ^NengaBooster$
 window_title: ^NengaBooster$
 
 f2 => move ^編集$
+f4 => click ^出力リストへ click 75 70
+
+window_title: ^注文・名入れ
+
+ctrl q => click ^組版依頼 wait 50 click ^登　録 wait 50 active ^NengaBooster$ focus 22 248

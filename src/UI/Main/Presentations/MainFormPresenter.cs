@@ -26,28 +26,34 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         public void AddToibanToCheckedList(Toiban toiban)
         {
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            UpdateToibanCheckedList(helper.AppendIfNothing(_viewmodel.Toiban));
+            UpdateToibanCheckedList(helper.AppendIfNothing(_viewmodel.Toiban), toiban);
         }
 
         public void AddToibanToCheckedList(Toiban toiban, bool check)
         {
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            UpdateToibanCheckedList(helper.AppendOrUpdate(_viewmodel.Toiban, check));
+            UpdateToibanCheckedList(helper.AppendOrUpdate(_viewmodel.Toiban, check), toiban);
         }
 
         public void UncheckToibanFromCheckedListAt(Toiban toiban)
         {
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            UpdateToibanCheckedList(helper.SetCheckTo(toiban, false));
+            UpdateToibanCheckedList(helper.SetCheckTo(toiban, false), toiban);
         }
 
         /// <summary>
         /// 出力リストと件数ラベルを更新する。
         /// </summary>
-        private void UpdateToibanCheckedList(ToibanCheckedListHelper checkedList)
+        private void UpdateToibanCheckedList(ToibanCheckedListHelper checkedList, Toiban indexedToiban)
         {
             _viewmodel.ToibanCheckedList = checkedList.ToRawDataList();
             _viewmodel.CheckedToibanCount = _viewmodel.ToibanCheckedList.Count(item => item.Item1).ToString("00");
+
+            var index = checkedList.IndexOf(indexedToiban);
+            if (index >= 0)
+            {
+                _viewmodel.ToibanCheckedListSelectedIndex = index;
+            }
         }
     }
 }

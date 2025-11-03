@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IsTama.NengaBooster.Core.NengaApps;
 using IsTama.NengaBooster.UI.Gateways;
 using IsTama.Utils;
 
@@ -21,7 +22,7 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
                 return;
 
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            UpdateToibanCheckedList(helper.RaiseAt(index));
+            UpdateToibanCheckedList(helper.RaiseAt(index), index - 1);
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
                 return;
 
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            UpdateToibanCheckedList(helper.LowerAt(index));
+            UpdateToibanCheckedList(helper.LowerAt(index), index + 1);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
                 return;
 
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
-            UpdateToibanCheckedList(helper.RemoveAt(index));
+            UpdateToibanCheckedList(helper.RemoveAt(index), index);
         }
 
         /// <summary>
@@ -72,7 +73,7 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
                 : mode == ToibanCheckedListClearMode.UncheckedOnly ? helper.RemoveUncheckedOnly()
                 : throw new InvalidOperationException();
 
-            UpdateToibanCheckedList(removed);
+            UpdateToibanCheckedList(removed, _viewmodel.Toiban);
         }
 
         /// <summary>
@@ -105,16 +106,42 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
 
             var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
 
-            UpdateToibanCheckedList(helper.SetCheckAt(index, check));
+            UpdateToibanCheckedList(helper.SetCheckAt(index, check), index);
         }
 
         /// <summary>
-        /// 出力リストと件数ラベルを更新する。
+        /// 出力リストと件数ラベルと選択状態のインデックスを更新する。
         /// </summary>
-        private void UpdateToibanCheckedList(ToibanCheckedListHelper checkedList)
+        private void UpdateToibanCheckedList(ToibanCheckedListHelper checkedList, Toiban indexedToiban)
+        {
+            var index = -1;
+            if (indexedToiban != Toiban.Empty)
+            {
+                index = checkedList.IndexOf(indexedToiban);
+            }
+
+            UpdateToibanCheckedList(checkedList, index);
+        }
+
+        private void UpdateToibanCheckedList(ToibanCheckedListHelper checkedList, int selectedIndex)
         {
             _viewmodel.ToibanCheckedList = checkedList.ToRawDataList();
             _viewmodel.CheckedToibanCount = _viewmodel.ToibanCheckedList.Count(item => item.Item1).ToString("00");
+
+            if (selectedIndex < 0)
+            {
+                _viewmodel.ToibanCheckedListSelectedIndex = -1;
+                return;
+            }
+
+            if (selectedIndex >= 0)
+            {
+                var count = _viewmodel.ToibanCheckedList.Count;
+                if (selectedIndex >= count)
+                    selectedIndex = count - 1;
+
+                _viewmodel.ToibanCheckedListSelectedIndex = selectedIndex;
+            }
         }
     }
 }

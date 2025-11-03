@@ -28,14 +28,23 @@ namespace IsTama.NengaBooster.UI.Main.View
             ChkListToiban.ItemCheck  += ChkListToiban_Check;
         }
 
+        
+
         /// <summary>
         /// アイテムの選択状態が変わると呼び出される。
         /// </summary>
         private void ChkListToiban_SelectedIndexChanged(object sender, EventArgs e)
         {
             var idx = ChkListToiban.SelectedIndex;
-            if (idx >= 0)
+            if (idx >= 0 && idx < ChkListToiban.Items.Count)
+            {
                 _controller.SetToibanToToibanTextBoxFromToibanCheckedListAt(idx);
+                _viewmodel.ToibanCheckedListSelectedIndex = idx;
+            }
+            else
+            {
+                _viewmodel.ToibanCheckedListSelectedIndex = -1;
+            }
         }
 
         /// <summary>
@@ -73,8 +82,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             if (idx > 0)
             {
                 _controller.RaiseSelectedToibanInCheckedListAt(idx);
-                idx -= 1;
-                ChkListToiban.SelectedIndex = idx;
+                //ChkListToiban.SelectedIndex = idx - 1;
             }
         }
 
@@ -94,8 +102,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             if (idx >= 0 && idx < ChkListToiban.Items.Count - 1)
             {
                 _controller.LowerSelectedToibanInCheckedListAt(idx);
-                idx += 1;
-                ChkListToiban.SelectedIndex = idx;
+                //ChkListToiban.SelectedIndex = idx + 1;
             }
         }
 
@@ -124,8 +131,8 @@ namespace IsTama.NengaBooster.UI.Main.View
             {
                 _controller.RemoveSelectedToibanFromCheckedListAt(idx);
 
-                if (idx < ChkListToiban.Items.Count)
-                    ChkListToiban.SelectedIndex = idx;
+                //if (idx < ChkListToiban.Items.Count)
+                //    ChkListToiban.SelectedIndex = idx;
             }
         }
 
