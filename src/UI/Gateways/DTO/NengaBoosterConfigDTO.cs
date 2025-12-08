@@ -94,6 +94,8 @@ namespace IsTama.NengaBooster.UI.Gateways
         public string Texts_InformationDialog_ErrorMessage { get; set; } = string.Empty;
         public string Texts_KouseishiDialog_ErrorMessage { get; set; } = string.Empty;
 
+        public string Text_Dialog_MovedForwardWorkProcessMessage { get; set; } = string.Empty;
+
         public string Path_UserSettingsFile { get; set; } = @"./user_config.json";
         public string Path_KeyReplacerExeFile { get; set; } = @"./KeyReplacer.exe";
         public string Texts_SSSExecutionPeriods { get; set; } = "0900-1130,1215-1430,1445-1700,1710-2100";

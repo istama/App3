@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using IsTama.NengaBooster.Core.Configs;
 using IsTama.NengaBooster.Core.NengaApps;
@@ -55,7 +56,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
         }
 
 
-        public async Task ExecuteAsync(Toiban toiban)
+        public async Task ExecuteAsync(Toiban toiban, IEnumerable<Toiban> outputToibanList)
         {
             // 注文名入れアプリとの連携設定を取得
             var applicationConfig = await _applicationConfigRepository.GetNaireAppilicationConfigAsync().ConfigureAwait(false);
@@ -80,6 +81,26 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             if (!await _naireRPAService.EnterToibanAsync(naireWindow, toiban, dialog, behaviorConfig).ConfigureAwait(false))
             {
                 return;
+            }
+
+            // 工程が先に進んでいる問番で、かつその問番が出力リストに含まれているなら、間違いの可能性が高いため、大きく警告を出す
+            if (dialog.IsOpen(0) && dialog.IsMovedForwardWorkProcessDialog())
+            {
+                // 出力リストの問番にこの問番が含まれているか
+                if (outputToibanList.Contains(toiban))
+                {
+                    // 警告ダイアログを表示
+                    // TODO 後でダイアログを表示するサービスクラスに変更する
+                    System.Windows.Forms.MessageBox.Show(
+                        "出力リストにある工程違いの問番を開いています。意図した問番を開いているか確認してください。",
+                        "NengaBooster.exe",
+                        System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Warning);
+
+                    // TODO Boosterの色を警告カラーにする
+
+                    return;
+                }
             }
 
             // 再組版モードなら組版依頼を行う

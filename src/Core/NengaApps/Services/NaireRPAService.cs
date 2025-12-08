@@ -64,7 +64,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
                 }
 
                 // ダイアログのメッセージに確認不要な工程名が含まれる場合、ダイアログを閉じる
-                if (dialogWindow.Contains(config.Texts_Dialog_WorkProcessNames))
+                if (dialogWindow.ContainsWorkProcessNames(config.Texts_Dialog_WorkProcessNames))
                 {
                     await dialogWindow.OkAsync().ConfigureAwait(false);
                     await naireWindow.ActivateAsync(500).ConfigureAwait(false);

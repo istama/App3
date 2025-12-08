@@ -304,6 +304,14 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         }
 
         /// <summary>
+        /// 問番のリストに変換する。
+        /// </summary>
+        public List<Toiban> ToToibanList()
+        {
+            return _toibanList.Select(item => item.Toiban).ToList();
+        }
+
+        /// <summary>
         /// チェックが入った要素の問番リストに変換する。
         /// </summary>
         public List<Toiban> ToCheckedToibanList()

@@ -231,5 +231,9 @@ namespace IsTama.NengaBooster.UI.NengaBoosterConfigSettings.Presentations
         [Description("校正紙ダイレクト出力のエラーダイアログに含まれるワード")]
         [Category("d. ダイアログ")]
         public string Texts_KouseishiDialog_ErrorMessage { get; set; }
+
+        [Description("工程が先に進んでいる場合にエラーダイアログに含まれるワード")]
+        [Category("d. ダイアログ")]
+        public string Text_Dialog_MovedForwardWorkProcessMessage { get; set; }
     }
 }

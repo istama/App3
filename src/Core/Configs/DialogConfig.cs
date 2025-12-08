@@ -21,5 +21,7 @@ namespace IsTama.NengaBooster.Core.Configs
         public int LabelIndex_Message { get; set; }
         public Point LabelPoint_Message { get; set; }
         public string ButtonName_Ok { get; set; }
+
+        public string Text_MovedForwardWorkProcessMessage { get; set; }
     }
 }

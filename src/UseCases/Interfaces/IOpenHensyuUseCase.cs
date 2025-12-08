@@ -9,6 +9,6 @@ namespace IsTama.NengaBooster.UseCases.Interfaces
 {
     interface IOpenHensyuUseCase
     {
-        Task ExecuteAsync(Toiban toiban);
+        Task ExecuteAsync(Toiban toiban, IEnumerable<Toiban> outputToibanList);
     }
 }

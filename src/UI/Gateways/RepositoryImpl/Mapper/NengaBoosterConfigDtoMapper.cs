@@ -279,6 +279,8 @@ namespace IsTama.NengaBooster.UI.Gateways
                 LabelPoint_Message = _configValueParser.ToObjectFrom<Point>(dto.LabelPoint_Dialog_Message),
                 ButtonName_Ok = dto.ButtonName_Dialog_Ok,
 
+                Text_MovedForwardWorkProcessMessage = dto.Text_Dialog_MovedForwardWorkProcessMessage,
+
                 Texts_ErrorMessage = eMsg.Split(',').Select(t => t.Trim()).ToArray(),
             };
         }

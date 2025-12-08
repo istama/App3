@@ -60,11 +60,12 @@
   "LabelIndex_Dialog_Message": 0,
   "LabelPoint_Dialog_Message": "53, 58",
   "ButtonName_Dialog_Ok": "^はい",
-  "Texts_Dialog_WorkProcessNames": "組版,編集,校正",
+  "Texts_Dialog_WorkProcessNames": "校正",
   "Texts_NaireDialog_ErrorMessage": "不正です,ありません,処理中です",
   "Texts_HensyuDialog_ErrorMessage": "不正です,存在しません,行程範囲外です",
   "Texts_InformationDialog_ErrorMessage": "0件です",
   "Texts_KouseishiDialog_ErrorMessage": "不正です,存在しません,追加できません",
+  "Text_Dialog_MovedForwardWorkProcessMessage": "工程が戻りますが",
   "Path_UserSettingsFile": "./user_config.json",
   "Path_KeyReplacerExeFile": "./KeyReplacer.exe",
   "Texts_SSSExecutionPeriods": "0900-1130,1215-1430,1445-1700,1710-2100"

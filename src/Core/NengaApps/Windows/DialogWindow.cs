@@ -50,11 +50,41 @@ namespace IsTama.NengaBooster.Core.NengaApps
         }
 
         /// <summary>
+        /// 引数の工程名のコレクションのうち、１つでもダイアログのメッセージに含まれていればtrueを返す。
+        /// また、コレクションが空ならfalseを返す。
+        /// Contains()メソッドとの違いは、渡された工程名の前後に自動で、()と（）を付けて判定すること。
+        /// 年賀アプリのダイアログによって、カッコの表記が全角か半角か揺れているためこのように対処している。
+        /// </summary>
+        public Boolean ContainsWorkProcessNames(IEnumerable<string> texts)
+        {
+            if (texts.Count() == 0)
+                return false;
+
+            var controls = WindowStates.GetFormControlStatesArray(_config.LabelPoint_Message);
+            if (controls.Length == 0)
+                throw new NengaBoosterException("ダイアログのラベルを取得できません。");
+
+            var control = controls.First();
+            var message = control.GetText();
+
+            return texts.Any(text => message.Contains($"({text})") || message.Contains($"（{texts}）"));
+        }
+
+        /// <summary>
         /// ダイアログがエラーメッセージの場合はtrueを返す。
         /// </summary>
         public Boolean IsErrorDialog()
         {
             return Contains(_config.Texts_ErrorMessage);
+        }
+
+        /// <summary>
+        /// 工程が先にすすでいるメッセージの場合はtrueを返す
+        /// </summary>
+        /// <returns></returns>
+        public Boolean IsMovedForwardWorkProcessDialog()
+        {
+            return Contains(_config.Text_MovedForwardWorkProcessMessage);
         }
 
         /// <summary>

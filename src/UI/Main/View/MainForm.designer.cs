@@ -161,6 +161,7 @@ namespace IsTama.NengaBooster.UI.Main.View
             this.TxtBoxToiban.BackColor = System.Drawing.SystemColors.Info;
             this.TxtBoxToiban.ContextMenuStrip = this.ContextMenuStrip_Toiban;
             this.TxtBoxToiban.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.TxtBoxToiban.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.TxtBoxToiban.Location = new System.Drawing.Point(14, 32);
             this.TxtBoxToiban.MaxLength = 10;
             this.TxtBoxToiban.Name = "TxtBoxToiban";

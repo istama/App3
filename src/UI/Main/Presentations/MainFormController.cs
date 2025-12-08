@@ -73,7 +73,10 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         public async Task EnterToibanToNaireAsync()
         {
             var toiban = _viewmodel.Toiban;
-            await _usecases.OpenNaire.ExecuteAsync(toiban).ConfigureAwait(false);
+            var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
+            var outputToibanList = helper.ToToibanList();
+
+            await _usecases.OpenNaire.ExecuteAsync(toiban, outputToibanList).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -82,7 +85,10 @@ namespace IsTama.NengaBooster.UI.Main.Presentations
         public async Task EnterToibanToHensyuAsync()
         {
             var toiban = _viewmodel.Toiban;
-            await _usecases.OpenHensyu.ExecuteAsync(toiban).ConfigureAwait(false);
+            var helper = ToibanCheckedListHelper.Create(_viewmodel.ToibanCheckedList);
+            var outputToibanList = helper.ToToibanList();
+
+            await _usecases.OpenHensyu.ExecuteAsync(toiban, outputToibanList).ConfigureAwait(false);
         }
 
         /// <summary>
