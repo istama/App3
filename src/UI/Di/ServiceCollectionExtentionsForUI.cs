@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IsTama.NengaBooster.Core.NengaApps;
+using IsTama.NengaBooster.UI.Dialog;
 using IsTama.NengaBooster.UI.Gateways;
 using IsTama.NengaBooster.UI.Main.Presentations;
 using IsTama.NengaBooster.UI.Main.View;
@@ -27,6 +28,7 @@ namespace IsTama.NengaBooster.UI.Di
             services.AddNengaBoosterConfigSettings();
             services.AddUserAccountSettings();
             services.AddUserConfigSettings();
+            services.AddDialog();
         }
 
         private static void AddGateways(this IServiceCollection services)
@@ -103,6 +105,11 @@ namespace IsTama.NengaBooster.UI.Di
             //        "user_nenga_settings.json");
             //});
 
+        }
+
+        private static void AddDialog(this IServiceCollection services)
+        {
+            services.AddSingleton<IWarningPresenter, WarningPresenter>();
         }
     }
 }

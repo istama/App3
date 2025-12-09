@@ -14,7 +14,12 @@ namespace IsTama.NengaBooster.AppMain
             var provider = GetServiceProvider();
             provider.DebugMode = true;
 
-            return provider.GetRequiredService<UI.Main.View.MainForm>();
+            var mainform = provider.GetRequiredService<UI.Main.View.MainForm>();
+            var warningPresenter = provider.GetRequiredService<UseCases.Presenters.IWarningPresenter>();
+
+            warningPresenter.Owner = mainform;
+
+            return mainform;
         }
 
         public void TestBuild()

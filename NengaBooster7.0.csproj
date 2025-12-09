@@ -97,6 +97,7 @@
     <Compile Include="src\Core\NengaApps\Adapters\INativeFormControlOperator.cs" />
     <Compile Include="src\Core\NengaApps\Adapters\INativeFormControlStates.cs" />
     <Compile Include="src\Core\NengaApps\Adapters\IKeyboard.cs" />
+    <Compile Include="src\UI\Dialog\WarningPresenter.cs" />
     <Compile Include="src\UI\Gateways\InfrastructureInterfaces\IUserConfigRepositoryExtended.cs" />
     <Compile Include="src\UI\Gateways\OperationModes\ToibanCheckedListClearMode.cs" />
     <Compile Include="src\UI\Gateways\OperationModes\ToibanSelectMode.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="src\UseCases\NengaApps\OperationModes\NaireOpenMode.cs" />
     <Compile Include="src\UseCases\NengaApps\PrintKouseishiUseCase.cs" />
     <Compile Include="src\UseCases\Presenters\IMainFormPresenter.cs" />
+    <Compile Include="src\UseCases\Presenters\IWarningPresenter.cs" />
     <Compile Include="src\UseCases\Repositories\IApplicationConfigRepository.cs" />
     <Compile Include="src\UseCases\Repositories\IBehaviorConfigRepository.cs" />
     <Compile Include="src\UseCases\Repositories\IOtherConfigRepository.cs" />

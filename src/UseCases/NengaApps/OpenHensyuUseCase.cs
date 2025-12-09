@@ -15,6 +15,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
     sealed class OpenHensyuUseCase : IOpenHensyuUseCase
     {
         private readonly IMainFormPresenter _presenter;
+        private readonly IWarningPresenter _warningPresenter;
 
         private readonly LoginService _loginService;
         private readonly HensyuRPAService _hensyuRPAService;
@@ -27,6 +28,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
 
         public OpenHensyuUseCase(
             IMainFormPresenter presenter,
+            IWarningPresenter warningPresenter,
             LoginService loginService,
             HensyuRPAService hensyuRPAService,
             NengaAppWindowFactory nengaAppWindowFactory,
@@ -35,6 +37,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             IUserConfigRepository userConfigRepository)
         {
             Assert.IsNull(presenter, nameof(presenter));
+            Assert.IsNull(warningPresenter, nameof(warningPresenter));
             Assert.IsNull(loginService, nameof(loginService));
             Assert.IsNull(hensyuRPAService, nameof(hensyuRPAService));
             Assert.IsNull(nengaAppWindowFactory, nameof(nengaAppWindowFactory));
@@ -43,6 +46,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
             Assert.IsNull(userConfigRepository, nameof(userConfigRepository));
 
             _presenter = presenter;
+            _warningPresenter = warningPresenter;
             _loginService = loginService;
             _hensyuRPAService = hensyuRPAService;
             _nengaAppWindowFactory = nengaAppWindowFactory;
@@ -85,12 +89,13 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
                 if (outputToibanList.Contains(toiban))
                 {
                     // 警告ダイアログを表示
-                    // TODO 後でダイアログを表示するサービスクラスに変更する
-                    System.Windows.Forms.MessageBox.Show(
-                        "出力リストにある工程違いの問番を開いています。意図した問番を開いているか確認してください。",
-                        "NengaBooster.exe",
-                        System.Windows.Forms.MessageBoxButtons.OK,
-                        System.Windows.Forms.MessageBoxIcon.Warning);
+                    _warningPresenter.ShowAlert("出力リストにある工程違いの問番を開いています。意図した問番を開いているか確認してください。");
+                    //// TODO 後でダイアログを表示するサービスクラスに変更する
+                    //System.Windows.Forms.MessageBox.Show(
+                    //    "出力リストにある工程違いの問番を開いています。意図した問番を開いているか確認してください。",
+                    //    "NengaBooster.exe",
+                    //    System.Windows.Forms.MessageBoxButtons.OK,
+                    //    System.Windows.Forms.MessageBoxIcon.Warning);
 
                     // TODO Boosterの色を警告カラーにする
 

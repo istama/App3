@@ -67,7 +67,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
             var control = controls.First();
             var message = control.GetText();
 
-            return texts.Any(text => message.Contains($"({text})") || message.Contains($"（{texts}）"));
+            return texts.Any(text => message.Contains($"({text})") || message.Contains($"（{text}）"));
         }
 
         /// <summary>
