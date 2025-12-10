@@ -55,9 +55,9 @@ namespace IsTama.NengaBooster.Core.NengaApps
         /// Contains()メソッドとの違いは、渡された工程名の前後に自動で、()と（）を付けて判定すること。
         /// 年賀アプリのダイアログによって、カッコの表記が全角か半角か揺れているためこのように対処している。
         /// </summary>
-        public Boolean ContainsWorkProcessNames(IEnumerable<string> texts)
+        public Boolean ContainsWorkProcessNames(IEnumerable<string> workProcessNames)
         {
-            if (texts.Count() == 0)
+            if (workProcessNames.Count() == 0)
                 return false;
 
             var controls = WindowStates.GetFormControlStatesArray(_config.LabelPoint_Message);
@@ -67,7 +67,7 @@ namespace IsTama.NengaBooster.Core.NengaApps
             var control = controls.First();
             var message = control.GetText();
 
-            return texts.Any(text => message.Contains($"({text})") || message.Contains($"（{text}）"));
+            return workProcessNames.Any(name => message.Contains($"({name})") || message.Contains($"（{name}）"));
         }
 
         /// <summary>
