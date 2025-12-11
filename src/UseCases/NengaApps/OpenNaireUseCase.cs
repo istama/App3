@@ -97,7 +97,7 @@ namespace IsTama.NengaBooster.UseCases.NengaApps
                     await _activeNengaBoosterFormService.ExecuteAsync().ConfigureAwait(false);
 
                     // 警告ダイアログを表示
-                    _warningPresenter.ShowAlert("出力リストにある工程違いの問番を開いています。意図した問番を開いているか確認してください。");
+                    _warningPresenter.ShowAlert("出力リストにある工程違いの問番を開きました。意図した問番を開いているか確認して！");
 
                     // TODO Boosterの色を警告カラーにする
 

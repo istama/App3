@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,17 @@ namespace IsTama.NengaBooster.UI.Dialog
 
         public void ShowAlert(string errorMessage)
         {
-            MessageBox.Show(
-                Owner,
-                errorMessage,
-                "NengaBooster.exe",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning);
+            var form = new WarningForm(errorMessage);
+            var screen_size = Screen.GetBounds(form);
+            form.StartPosition = FormStartPosition.Manual;
+            form.DesktopLocation = new Point(screen_size.Width - form.Width, 120);
+            form.ShowDialog();
+            //MessageBox.Show(
+            //    Owner,
+            //    errorMessage,
+            //    "NengaBooster.exe",
+            //    MessageBoxButtons.OK,
+            //    MessageBoxIcon.Warning);
         }
     }
 }

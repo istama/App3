@@ -97,6 +97,12 @@
     <Compile Include="src\Core\NengaApps\Adapters\INativeFormControlOperator.cs" />
     <Compile Include="src\Core\NengaApps\Adapters\INativeFormControlStates.cs" />
     <Compile Include="src\Core\NengaApps\Adapters\IKeyboard.cs" />
+    <Compile Include="src\UI\Dialog\WarningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\UI\Dialog\WarningForm.Designer.cs">
+      <DependentUpon>WarningForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\UI\Dialog\WarningPresenter.cs" />
     <Compile Include="src\UI\Gateways\InfrastructureInterfaces\IUserConfigRepositoryExtended.cs" />
     <Compile Include="src\UI\Gateways\OperationModes\ToibanCheckedListClearMode.cs" />
@@ -332,6 +338,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="src\UI\Dialog\WarningForm.resx">
+      <DependentUpon>WarningForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\UI\Main\View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
